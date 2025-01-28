@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+	<title>DDS-NET</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+	<link rel="icon" type="image/x-icon" href="/views/favicon.ico">
+	<link href="./output.css" rel="stylesheet">
+	<script defer src="data.js"></script>
+	<script defer src="terminal.js"></script>
+	<script defer src="audio.js"></script>
+</head>
+<body class="bg-#000 font-mono h-screen">
+	<!-- Overall Container -->
+	<div class="flex flex-col crt h-screen">
+		
+		<!-- Corner Display -->
+		<div id="corner-display" class="party-menu text-white font-bold select-none cursor-pointer rounded-lg p-1.5 shadow-lg bg-gradient-to-b from-red-800 to- shadow-lg shadow-red-800/50 outline-red-800 outline-double fixed top-4 right-4 corner-button hover:shadow-white click-sfx" data-clicksound="sounds/Okay.mp3">
+			<div class="grid grid-cols-2 text-right text-sm space-x-1"><div id="moonimage"></div><div id="phase-display"></div></div>
+			<div class="grid grid-cols-2 text-left">ћ<p class="text-right"id="macca-display"></p></div>
+		</div>
+		
+		<!-- Top Section: Log Display -->
+		<div class="flex-1 bg-gradient-to-b from-slate-950 to- overflow-y-auto p-2 no-scrollbar text-white" id="terminal"></div>
+		
+		<!-- Middle Section: Menu Display -->
+		<div class="flex justify-center">
+		  <div class="flex space-x-4 w-full justify-center party-menu motion-reduce" id="container">
+			<button class="tab-button hover-sfx click-sfx bg-gradient-to-b from-red-800 shadow-lg shadow-red-800/50 hover:shadow-white/50" data-hoversound="sounds/cursor.mp3" data-tab="comp" aria-selected="true">COMP</button>
+			<button class="tab-button hover-sfx click-sfx bg-gradient-to-b from-red-800 shadow-lg shadow-red-800/50 hover:shadow-white/50" data-tab="fight" data-hoversound="sounds/cursor.mp3" aria-selected="false">FIGHT</button>
+			<button class="tab-button hover-sfx click-sfx bg-gradient-to-b from-red-800 shadow-lg shadow-red-800/50 hover:shadow-white/50" data-tab="skills" data-hoversound="sounds/cursor.mp3" aria-selected="false">SKILLS</button>
+			<button class="tab-button hover-sfx click-sfx bg-gradient-to-b from-red-800 shadow-lg shadow-red-800/50 hover:shadow-white/50" data-tab="status" data-hoversound="sounds/cursor.mp3" aria-selected="false">STATUS</button>
+			<button class="tab-button hover-sfx click-sfx bg-gradient-to-b from-red-800 shadow-lg shadow-red-800/50 hover:shadow-white/50" data-tab="change" data-hoversound="sounds/cursor.mp3" aria-selected="false">CHANGE</button>
+		  </div>
+		</div>
+
+		<!-- Bottom Section: Party Display -->
+		<div id="bottom-display">
+			<div class="grid grid-cols-3 gap-2 flex p-4 party-menu motion-reduce" id="party-list">
+				<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-1" tabindex="0"></div>
+				<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-2" tabindex="0"></div>
+				<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-3" tabindex="0"></div>
+				<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-4" tabindex="0"></div>
+				<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-5" tabindex="0"></div>
+				<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-6" tabindex="0"></div>
+			</div>
+		</div>	
+		
+		<!-- Player Form -->
+		<div id="player-form" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden"></div>
+	</div>
+	
+</body>
+</html>
