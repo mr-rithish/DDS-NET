@@ -8,25 +8,25 @@
 
 ## **📑 Table of Contents**
 
-1. [📕Introduction](#📕introduction)
+1. [📕Introduction](#introduction)
 
-2. [💾Installation](#💾installation)
+2. [💾Installation](#installation)
 
-3. [🔧Important Files](#🔧important-files)
+3. [🔧Important Files](#important-files)
 
-4. [🪄Custom UI](#🪄custom-ui)
+4. [🪄Custom UI](#custom-ui)
 
-5. [💚Contributing](#💚contributing)
+5. [💚Contributing](#contributing)
 
-6. [💌Contact Me](#💌contact-me)
+6. [💌Contact Me](#contact-me)
 
-7. [📄Credits](#📄credits)
+7. [📄Credits](#credits)
 
-8. [📜License](#📜license)
+8. [📜License](#license)
 
-9. [📝Changelog](#📝changelog)
+9. [📝Changelog](#changelog)
 
-10. [🚗Roadmap](#🚗roadmap)
+10. [🚗Roadmap](#roadmap)
 
 ## **📕Introduction**
 
@@ -131,7 +131,7 @@ Contributions to the core system are welcomed, while forks can have their own fe
 
 ## 💌Contact Me
 
-If for any reason you have problems, suggestions, questions ect. Feel free to contact my discord etherawaits for anything you need. I also love to see what people create with it.
+If for any reason you have problems, suggestions, questions ect. Feel free to contact my discord etherawaits or my email <brettwilliams343@gmail.com> for anything you need. I also love to see what people create with it.
 
 ## 📄Credits
 

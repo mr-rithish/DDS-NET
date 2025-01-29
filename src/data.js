@@ -672,7 +672,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					<div class="flex justify-center p-4  motion-reduced">
 						<div class="menu grid grid-cols-2 gap-2 flex bg-gradient-to-b shadow-lg from-slate-950 to- bg-#000 p-4 w-full text-white rounded-md bg-opacity-50 shadow-teal-900/50">
 							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="about-button">About DDS-NET</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="support-button">Feedback / Support</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="support-button">Feedback / Contribution</div>
 							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="creation-button">Character Creation</div>
 							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="rolling-button">Dice Rolling</div>
 							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="management-button">Party Management</div>
@@ -684,7 +684,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const support = document.getElementById("support-button");
         if (support) {
           support.addEventListener("click", () => {
-            termtext("<color:yellow>Help</color> <b>Support / Feedback</b>.\nIf you have any questions or feedback feel free to reach out to etherawaits on discord. If you wish to support my project, please consider helping me with my hosting costs. You can donate at https://ko-fi.com/etherawaits\n\n");
+            termtext("<color:yellow>Help</color> <b>Support / Contribution</b>.\nIf you have any questions or feedback feel free to reach out to etherawaits on discord. If you wish to support my project, please consider helping me with my hosting costs. You can donate at <u>https://ko-fi.com/etherawaits</u>. This project is open source! You can contribute and peek inside the system at <u>https://github.com/EtherAwaits/DDS-NET</u>.\n\n");
           });
         }
         const about = document.getElementById("about-button");
