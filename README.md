@@ -52,7 +52,7 @@ DDS-NET is a party management and dice roller system for the Shin Megami Tensei 
 
 3. ### ✅Run the server
 
-    Open terminal to comp-root and run the server.
+    After cloning this repository, open terminal to DDS-NET and run the server.
 
     ```bash
     node server
@@ -65,35 +65,35 @@ DDS-NET is a party management and dice roller system for the Shin Megami Tensei 
 
 *Important files to note.*
 
-### 💽comp-root/server.js
+### 💽DDS-NET/server.js
 
 This will be used to start up the webapp with Node.js as well as establish API routes and statically serve the /src files. You can edit this to use API utilities with your own Arduino!
 
-### 🧾comp-root/src/index.html
+### 🧾DDS-NET/src/index.html
 
 The bare html web page. This is controlled and manipulated with data.js
 
-### 🎵comp-root/src/audio.js
+### 🎵DDS-NET/src/audio.js
 
 Functions to handle the sound effects.
 
-### ⌨️comp-root/src/terminal.js
+### ⌨️DDS-NET/src/terminal.js
 
 Handles the termtext() function to simulate a terminal interface and bootup message.
 
-### 📥comp-root/src/input.css
+### 📥DDS-NET/src/input.css
 
 Main file for changing the CSS for those familiar with tailwindcss.
 
-### 🔊comp-root/src/sounds/
+### 🔊DDS-NET/src/sounds/
 
 .mp3's to be used with audio.js
 
-### 🪟comp-root/src/views/
+### 🪟DDS-NET/src/views/
 
 Contains all images.
 
-### 🧮comp-root/src/data.css
+### 🧮DDS-NET/src/data.css
 
 Handles menus, forms, local storage, key bindings, and just about everything else. This is the main file to edit.
 
@@ -103,7 +103,7 @@ All data is saved into the browser using local storage. However, uploaded user i
 
 ## **🪄Custom UI**
 
-DDS-NET Uses [Tailwindcss](https://tailwindcss.com/docs/styling-with-utility-classes) to handle all the CSS heavy lifting. When making changes to the UI, update continuously using the simple command in comp-root.
+DDS-NET Uses [Tailwindcss](https://tailwindcss.com/docs/styling-with-utility-classes) to handle all the CSS heavy lifting. When making changes to the UI, update continuously using the simple command in /DDS-NET.
 
 ```bash
 npm run dev
