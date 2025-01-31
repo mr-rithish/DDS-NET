@@ -9,6 +9,22 @@ body {
     margin: 0;
     padding: 0;
 }
+.form-input {
+	@apply bg-base-300 border-neutral border-2 btn-sm;
+  }
+.form-input:hover {
+	@apply bg-base-100 border-accent;
+}
+.form-input:focus {
+	@apply bg-base-100 border-accent;
+}
+.btn {
+	@apply btn-sm;
+}
+.select {
+	@apply select-sm;
+}
+
 .stat-bar {
 	margin: 0.5rem 0;
 	user-select: none;
@@ -165,6 +181,7 @@ body {
 	@apply outline-accent;
 }
 .form-button{
+	@apply stroke-2 stroke-white;
 	opacity: 0.8;
 	outline-color: #fff;
 	outline-style: solid;
@@ -189,7 +206,6 @@ body {
 	@apply rounded rounded-tl-3xl outline-primary;
 	outline-style: double;
 	outline-width: 4px;
-	text-color: white;
 	font-family: monospace;
 	animation: scale-out-ver-bottom .2s 1;
 }

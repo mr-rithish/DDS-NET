@@ -2729,41 +2729,38 @@ document.addEventListener("DOMContentLoaded", () => {
 						<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 							<div>
 							<label for="username">Username</label>
-							<input class="form-text w-full hover-sfx" type="text" id="username" data-hoversound="sounds/cursor.mp3" maxlength="16" required>
+							<input class="input form-input w-full hover-sfx" type="text" id="username" data-hoversound="sounds/cursor.mp3" maxlength="16" required>
 							</div>
 							<div>
 							<label for="system">Version</label>
-								<select id="system" name="system" class="form-text hover-sfx w-full" data-hoversound="sounds/cursor.mp3">
+								<select id="system" name="system" class="select form-input hover-sfx w-full" data-hoversound="sounds/cursor.mp3">
 								  <option value="0">Devil City Tokyo</option>
 								  <option value="1">Tokyo Conception</option>
 								</select>
 							</div>
 
              <div class="dropdown" id="theme">
-              <div tabindex="0" role="button" class="btn m-1">
-                Theme
+              <div tabindex="0" role="button" class="btn form-input m-1 hover-sfx click-sfx" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Okay.mp3">
+                Pick Theme
                 <svg width="12px" height="12px" class="inline-block h-2 w-2 fill-current opacity-60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
                   <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
                 </svg>
               </div>
               <ul tabindex="0" class="dropdown-content bg-base-300 rounded-box z-[1] w-52 p-2 shadow-2xl max-h-60 overflow-y-auto">
                 <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="DDS-NET" value="ddsnet"></li>
-                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Bumblebee" value="bumblebee"></li>
                 <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Business" value="business"></li>
                 <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Synthwave" value="synthwave"></li>
-                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Retro" value="retro"></li>
-                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Aqua" value="aqua"></li>
                 <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Halloween" value="halloween"></li>
-                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Garden" value="garden"></li>
                 <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Forest" value="forest"></li>
                 <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Coffee" value="coffee"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Sunset" value="sunset"></li>
                 </ul>
             </div>
 						</div>
 
 						<div class="w-full justify-center gap-6 p-4 flex">
-							<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
-							<input class="form-button w-8 h-8 hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
+							<input class="btn form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+							<input class="btn form-input hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
 						</div>
 					</div>
 				   `;
