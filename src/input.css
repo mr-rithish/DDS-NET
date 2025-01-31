@@ -25,7 +25,7 @@ body {
 	cursor: pointer;
 	user-select: none;
 	text-shadow: 4px 4px 4px black
-    }
+}
 .bar-bg {
 	@apply rounded rounded-tr-2xl;
     background-color: #000000;
@@ -58,30 +58,28 @@ body {
 	font-family: monospace;	
 }
 .party-member:hover {
+	@apply outline-accent;
 	padding: .3rem .3rem;
-	outline-color: #ef4444;
 	outline-style: double;
 	outline-width: 4px;
 	transition: outline-width 0.1s;
 }
 .party-member:focus {
+	@apply outline-accent;
 	padding: .3rem .3rem;
-	outline-color: #ef4444;
 	outline-style: double;
 	outline-width: 4px;
 	transition: outline-width 0.1s;
 	animation: bounce .2s .5;
 }
 .party-member-selected {
-	@apply border-red-400 shadow-lg shadow-red-500/50;
-	outline-color: #ef4444;
+	@apply border-accent shadow-lg shadow-accent/50;
 	outline-style: double;
 	outline-width: 4px;
 	animation: bounce .2s .5;
 }
 .tab-button {
-	@apply rounded-sm rounded-tl-xl;
-	outline-color: #1e40af;
+	@apply rounded-sm rounded-tl-xl outline-secondary;
 	outline-style: double;
 	outline-width: 4px;
 	color: white;
@@ -92,18 +90,16 @@ body {
 	transition: outline-width 0.1s;
 }
 .tab-button:hover {
+	@apply outline-accent bg-accent;
 	padding: .2rem .2rem;
-	outline-color: #ef4444;
-	background-color: #ef4444;
 }
 .tab-button:focus {
+	@apply outline-accent;
 	padding: .2rem .2rem;
-	outline-color: #ef4444;
 	animation: bounce .2s .5;
 }
 .tab-button-selected {
-	outline-color: #ef4444;
-	background-color: #ef4444;
+	@apply outline-accent bg-accent;
 	animation: bounce .2s .5;
 }
 .term-shake {
@@ -145,7 +141,7 @@ body {
 	transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 .form {
-	outline-color: #1e40af;
+	@apply outline-secondary;
 	outline-style: double;
 	outline-width: 4px;
 	animation: scale-in-ver-top .2s 1;
@@ -163,10 +159,10 @@ body {
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
 }
 .form-text:hover {
-	outline-color: #ef4444;
+	@apply outline-accent;
 }
 .form-text:focus {
-	outline-color: #ef4444;
+	@apply outline-accent;
 }
 .form-button{
 	opacity: 0.8;
@@ -179,19 +175,18 @@ body {
 }
 .form-button:hover 
 {
-	outline-color: #ef4444;
+	@apply outline-accent;
 }
 .form-button:focus 
 {
-	outline-color: #ef4444;
+	@apply outline-accent;
 }
 .form.closing {
 	animation: scale-out-ver-top 0.2s ease-out;
 }
 .menu
 {
-	@apply rounded rounded-tl-3xl;
-	outline-color: #134e4a;
+	@apply rounded rounded-tl-3xl outline-primary;
 	outline-style: double;
 	outline-width: 4px;
 	text-color: white;
@@ -206,21 +201,20 @@ body {
 	font-family: monospace;
 }
 .menu-option:hover {
-	outline-color: #ef4444;
+	@apply outline-accent;
 	outline-style: solid;
 	outline-width: 2px;
 	transition: outline-width 0.1s;
 }
 .menu-option:focus {
-	outline-color: #ef4444;
+	@apply outline-accent;
 	outline-style: solid;
 	outline-width: 2px;
 	transition: outline-width 0.1s;
 	animation: bounce .2s .5;
 }
 .corner-button {
-	@apply rounded-sm rounded-tl-2xl;
-	outline-color: #1e40af;
+	@apply rounded-sm rounded-tl-2xl outline-secondary;
 	outline-style: double;
 	outline-width: 4px;
 	color: white;
@@ -230,23 +224,20 @@ body {
 	transition: outline-width 0.1s;
 }
 .corner-button:hover {
+	@apply outline-accent bg-accent;
 	padding: .5rem .5rem;
-	outline-color: #ef4444;
-	background-color: #ef4444;
 	transition: background-color 0.1s;
 	transition: outline-width 0.1s;
 }
 .corner-button:focus {
+	@apply outline-accent bg-accent;
 	padding: .5rem .5rem;
-	outline-color: #ef4444;
-	background-color: #ef4444;
 	transition: background-color 0.1s;
 	transition: outline-width 0.1s;
 	animation: bounce .2s .5;
 }
 .corner-button-selected {
-	outline-color: #ef4444;
-	background-color: #ef4444;
+	@apply outline-accent bg-accent;
 	animation: bounce .2s .5;
 }
 
