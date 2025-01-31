@@ -18,7 +18,7 @@ module.exports = {
 				"secondary": "#1E40AF", // blue-800
 				"accent": "#EF4444", // red-500
 				"neutral": "#020617", // slate-950
-				"base-100": "#ffffff",
+				"base-100": "#020617",
 			}
 		},
 		"light",

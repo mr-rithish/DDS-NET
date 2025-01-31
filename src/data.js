@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
       macca: 100,
       rules: 0, // 0 = X, 1 = TC
       username: "<USER>",
-      config1: 0,
+      config1: "ddsnet", // Theme, 0 = DDS
       config2: 0,
       config3: 0,
       config4: 0,
@@ -128,6 +128,19 @@ document.addEventListener("DOMContentLoaded", () => {
 	
   const sys = getSystem();
   const user = sys.username;
+  const theme = sys.config1;
+
+  if (theme === 0 || theme === undefined) // Adapts old versions of system data.
+  {
+    console.log("Adjusted Theme to Default")
+    sys.config1 = "ddsnet";
+    setSystem(sys);
+    document.documentElement.setAttribute('data-theme', "ddsnet");
+  }
+  else{
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+
 
   // Generates the 6 slots using the ID's in the "party" data
   function populatePartySlots(players, party, noevent = false) {
@@ -1591,7 +1604,7 @@ document.addEventListener("DOMContentLoaded", () => {
           closeForm();
         }
     break;
-    case "cornerdisplay":
+      case "cornerdisplay":
       formDisplay.innerHTML = `
 					<div class="form text-white rounded-lg rounded-tl-3xl p-4 w-1/2 shadow-lg bg-gradient-to-b from-secondary to- shadow-lg shadow-secondary/50  motion-reduced">  
 						<h2 class="text-center font-bold mb-4">Update Global Data</h2>
@@ -2725,7 +2738,29 @@ document.addEventListener("DOMContentLoaded", () => {
 								  <option value="1">Tokyo Conception</option>
 								</select>
 							</div>
+
+             <div class="dropdown" id="theme">
+              <div tabindex="0" role="button" class="btn m-1">
+                Theme
+                <svg width="12px" height="12px" class="inline-block h-2 w-2 fill-current opacity-60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
+                  <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+                </svg>
+              </div>
+              <ul tabindex="0" class="dropdown-content bg-base-300 rounded-box z-[1] w-52 p-2 shadow-2xl max-h-60 overflow-y-auto">
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="DDS-NET" value="ddsnet"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Bumblebee" value="bumblebee"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Business" value="business"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Synthwave" value="synthwave"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Retro" value="retro"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Aqua" value="aqua"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Halloween" value="halloween"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Garden" value="garden"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Forest" value="forest"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Coffee" value="coffee"></li>
+                </ul>
+            </div>
 						</div>
+
 						<div class="w-full justify-center gap-6 p-4 flex">
 							<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
 							<input class="form-button w-8 h-8 hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
@@ -2743,9 +2778,12 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("username").value = systeminfo.username;
 
         function systemupdate() {
+          const selectedThemeElement = document.querySelector('input[name="theme-dropdown"]:checked');
+          const setTheme = selectedThemeElement ? selectedThemeElement.value : systeminfo.config1;
           const formElements = {
             username: document.getElementById("username").value.trim(),
             rules: document.getElementById("system").value,
+            theme: setTheme,
           };
 
           const system = {
@@ -2754,15 +2792,15 @@ document.addEventListener("DOMContentLoaded", () => {
             macca: systeminfo.macca,
             moon: systeminfo.moon,
             macca: systeminfo.macca,
-            config1: systeminfo.config1,
+            config1: formElements.theme,
             config2: systeminfo.config2,
             config3: systeminfo.config3,
             config4: systeminfo.config4,
             config5: systeminfo.config5,
             config6: systeminfo.config6,
             config7: systeminfo.config7,
-            config1: systeminfo.config8,
-            config1: systeminfo.config9,
+            config8: systeminfo.config8,
+            config9: systeminfo.config9,
           };
 
           if (formElements.username === "") {
@@ -2775,7 +2813,9 @@ document.addEventListener("DOMContentLoaded", () => {
           updateCornerDisplay();
           playSound("sounds/Comp.mp3");
           termtext(`<anim:term-blue><color:green>Success</color> System info for <color:blue>${formElements.username}</color> has been updated.\n`);
-		  location.reload();
+		      location.reload();
+          console.log(formElements.theme)
+          console.log(system.config1)
           closeForm();
         }
 
@@ -2902,7 +2942,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let moonicon = `${system.moon}.gif`;
     moondisplay = document.getElementById("phase-display").innerHTML = `${phase}<br>MOON`;
-    moonimage.innerHTML = `<img src="views/${moonicon}" alt="${system.moon}" class="w-8 h-8 rounded-full shadow-lg ring-2">`;
+    moonimage.innerHTML = `<img src="views/${moonicon}" alt="${system.moon}" class="w-8 h-8 rounded-full shadow-lg ring-2 ring-secondary">`;
   }
 
   const menuTabs = document.querySelectorAll(".tab-button");
