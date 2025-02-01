@@ -772,14 +772,14 @@ document.addEventListener("DOMContentLoaded", () => {
 				  <!-- Adjust HP & MP -->  
 				  <div class="mb-2 grid grid-cols-4 gap-2">  
 					<label>HP</label>  
-					<input type="number" id="form-hp" class="form-text w-16 hover-sfx" data-hoversound="sounds/cursor.mp3">  
+					<input type="number" id="form-hp" class="input form-input w-16 hover-sfx" data-hoversound="sounds/cursor.mp3">  
 					<label>MP</label>  
-					<input type="number" id="form-mp" class="form-text w-16 hover-sfx" data-hoversound="sounds/cursor.mp3">  
+					<input type="number" id="form-mp" class="input form-input w-16 hover-sfx" data-hoversound="sounds/cursor.mp3">  
 				  </div>  
 				  <!-- Status Dropdown -->  
 				  <div class="grid grid-cols-4 gap-2">  
 					<label>Status</label>  
-					<select id="form-status" class="form-text hover-sfx w-16" data-hoversound="sounds/cursor.mp3">  
+					<select id="form-status" class="select form-input hover-sfx w-16" data-hoversound="sounds/cursor.mp3">  
 					   <option>Normal</option>  
 					   <option>Low_HP</option>  
 					   <option>Bind</option>  
@@ -802,16 +802,16 @@ document.addEventListener("DOMContentLoaded", () => {
 				  <!-- Adjust Fate -->  
 					<label>Fate</label>  
 					<div class="flex justify-start items-center space-x-2">  
-					   <button id="fate-decrease" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>  
+					   <button id="fate-decrease" class="btn form-input btn-xs hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>  
 					   <span id="form-fate" class="mx-2">0</span>  
-					   <button id="fate-increase" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>   
+					   <button id="fate-increase" class="btn btn-xs form-input hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>   
 				  </div>  
 				  </div>  
 				  
 				  <!-- Buttons -->  
 				  <div class="flex justify-start space-x-4 mt-4 w-full">  
-					<button id="form-cancel" class="form-button w-8 h-8 click-sfx hover-sfx" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3" data-volume="0.5">X</button>  
-					<button id="form-confirm" class="form-button w-8 h-8 click-sfx hover-sfx" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Okay.mp3" data-volume="0.5">✔</button>  
+					<button id="form-cancel" class="btn btn-sm form-input click-sfx hover-sfx" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3" data-volume="0.5">X</button>  
+					<button id="form-confirm" class="btn btn-sm form-input click-sfx hover-sfx" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Okay.mp3" data-volume="0.5">✔</button>  
 				  </div>  
 			   </div>  
 				`;
@@ -825,71 +825,71 @@ document.addEventListener("DOMContentLoaded", () => {
 					<h2 class="text-center font-bold text-lg mb-4">Register New User</h2> 
 					<div class="grid grid-cols-2 gap-2> 
 						<label for="Name">Input Username:</label>  
-						<input class="form-text hover-sfx" type="text" id="Name" name="Name" maxlength="24" data-hoversound="sounds/cursor.mp3" placeholder="Your Name Please...">  
+						<input class="input form-input hover-sfx" type="text" id="Name" name="Name" maxlength="24" data-hoversound="sounds/cursor.mp3" placeholder="Your Name Please...">  
 					</div>
 					<br>
 					<div class="grid grid-cols-4 landscape:grid-cols-8 md:grid-cols-8 gap-2">
 					<label for="Type">Type:</label>  
-						<select class="form-text w-16 hover-sfx" id="Type" name="Type" data-hoversound="sounds/cursor.mp3">  
+						<select class="select select-xs form-input w-16 hover-sfx" id="Type" name="Type" data-hoversound="sounds/cursor.mp3">  
 							<option value="Human">Human</option>  
 							<option value="Demon">Demon</option>  
 							<option value="Other">Other</option> 
 						</select>
 					<label for="Level">Level:</label>  
-					<input class="form-text w-16 hover-sfx" type="number" id="Level" name="Level" min="1" max="100" placeholder="1-100" data-hoversound="sounds/cursor.mp3" required> 
+					<input class="input form-input w-16 hover-sfx" type="number" id="Level" name="Level" min="1" max="100" placeholder="1-100" data-hoversound="sounds/cursor.mp3" required> 
 					
 					<label for="HP_Max">Max HP:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="VT+L*m" type="number" id="HP_Max" name="HP_Max" min="0" data-hoversound="sounds/cursor.mp3" required>  
+					<input class="input form-input w-16 hover-sfx" placeholder="VT+L*m" type="number" id="HP_Max" name="HP_Max" min="0" data-hoversound="sounds/cursor.mp3" required>  
 					<label for="MP_Max">Max MP:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="MG+L*m" type="number" id="MP_Max" name="MP_Max" min="0" data-hoversound="sounds/cursor.mp3" required>  
+					<input class="input form-input w-16 hover-sfx" placeholder="MG+L*m" type="number" id="MP_Max" name="MP_Max" min="0" data-hoversound="sounds/cursor.mp3" required>  
 					
 					<label for="Fate_Max">Max Fate:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="LK/5+5" type="number" id="Fate_Max" name="Fate_Max" min="0" data-hoversound="sounds/cursor.mp3" required>
+					<input class="input form-input w-16 hover-sfx" placeholder="LK/5+5" type="number" id="Fate_Max" name="Fate_Max" min="0" data-hoversound="sounds/cursor.mp3" required>
 					<label for="Initiative">Initiative:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="AG+L/2" type="number" id="Initiative" name="Initiative" min="0" data-hoversound="sounds/cursor.mp3" required>
+					<input class="input form-input w-16 hover-sfx" placeholder="AG+L/2" type="number" id="Initiative" name="Initiative" min="0" data-hoversound="sounds/cursor.mp3" required>
 					<label for="Strength">Strength:</label>				
-					<input class="form-text w-16 hover-sfx" placeholder="0-40" type="number" id="Strength" name="Strength" min="0" data-hoversound="sounds/cursor.mp3" required> 
+					<input class="input form-input w-16 hover-sfx" placeholder="0-40" type="number" id="Strength" name="Strength" min="0" data-hoversound="sounds/cursor.mp3" required> 
 					<label for="Strength">STR TN:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="ST*5+L" type="number" id="STR_TN" name="STR_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
+					<input class="input form-input w-16 hover-sfx" placeholder="ST*5+L" type="number" id="STR_TN" name="STR_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
 					<label for="Magic">Magic:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="0-40" type="number" id="Magic" name="Magic" min="0" data-hoversound="sounds/cursor.mp3" required> 
+					<input class="input form-input w-16 hover-sfx" placeholder="0-40" type="number" id="Magic" name="Magic" min="0" data-hoversound="sounds/cursor.mp3" required> 
 					<label for="Magic">MG TN:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="MG*5+L" type="number" id="MG_TN" name="MG_TN" min="0" data-hoversound="sounds/cursor.mp3" required> 
+					<input class="input form-input w-16 hover-sfx" placeholder="MG*5+L" type="number" id="MG_TN" name="MG_TN" min="0" data-hoversound="sounds/cursor.mp3" required> 
 					<label for="Vitality">Vitality:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="0-40" type="number" id="Vitality" name="Vitality" min="0" data-hoversound="sounds/cursor.mp3" required> 
+					<input class="input form-input w-16 hover-sfx" placeholder="0-40" type="number" id="Vitality" name="Vitality" min="0" data-hoversound="sounds/cursor.mp3" required> 
 					<label for="Vitality">VT TN:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="VT*5+L" type="number" id="VT_TN" name="VT_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
+					<input class="input form-input w-16 hover-sfx" placeholder="VT*5+L" type="number" id="VT_TN" name="VT_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
 					<label for="Agility">Agility:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="0-40" type="number" id="Agility" name="Agility" min="0" data-hoversound="sounds/cursor.mp3" required>
+					<input class="input form-input w-16 hover-sfx" placeholder="0-40" type="number" id="Agility" name="Agility" min="0" data-hoversound="sounds/cursor.mp3" required>
 					<label for="Agility">AG TN:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="AG*5+L" type="number" id="AG_TN" name="AG_TN" min="0" data-hoversound="sounds/cursor.mp3" required>  
+					<input class="input form-input w-16 hover-sfx" placeholder="AG*5+L" type="number" id="AG_TN" name="AG_TN" min="0" data-hoversound="sounds/cursor.mp3" required>  
 					<label for="Luck">Luck:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="0-40" type="number" id="Luck" name="Luck" min="0" data-hoversound="sounds/cursor.mp3" required>
+					<input class="input form-input w-16 hover-sfx" placeholder="0-40" type="number" id="Luck" name="Luck" min="0" data-hoversound="sounds/cursor.mp3" required>
 					<label for="Luck">LK TN:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="LK*5+L" type="number" id="LK_TN" name="LK_TN" min="0" data-hoversound="sounds/cursor.mp3" required> 
+					<input class="input form-input w-16 hover-sfx" placeholder="LK*5+L" type="number" id="LK_TN" name="LK_TN" min="0" data-hoversound="sounds/cursor.mp3" required> 
 
 					<label for="Melee_Power">Melee Power:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="ST+L" type="number" id="Melee_Power" name="Melee_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
+					<input class="input form-input w-16 hover-sfx" placeholder="ST+L" type="number" id="Melee_Power" name="Melee_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
 					<label for="Magic_Power">Magic Power:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="MG+L" type="number" id="Magic_Power" name="Magic_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
+					<input class="input form-input w-16 hover-sfx" placeholder="MG+L" type="number" id="Magic_Power" name="Magic_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
 					<label for="Ranged_Power">Ranged Power:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="AG" type="number" id="Ranged_Power" name="Ranged_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
+					<input class="input form-input w-16 hover-sfx" placeholder="AG" type="number" id="Ranged_Power" name="Ranged_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
 					
 					<label for="Dodge_TN">Dodge TN:</label>  
-					<input class="form-text w-16 hover-sfx" type="number" placeholder="AG+10" id="Dodge_TN" name="Dodge_TN" min="0" data-hoversound="sounds/cursor.mp3" required>  
+					<input class="input form-input w-16 hover-sfx" type="number" placeholder="AG+10" id="Dodge_TN" name="Dodge_TN" min="0" data-hoversound="sounds/cursor.mp3" required>  
 					<label for="Talk_TN">Talk TN:</label>  
-					<input class="form-text w-16 hover-sfx" type="number" placeholder="LK*2+20" id="Talk_TN" name="Talk_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
+					<input class="input form-input w-16 hover-sfx" type="number" placeholder="LK*2+20" id="Talk_TN" name="Talk_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
 					</div>  
 					
 					<div class="mt-2">
 					<label for="playerImage">Add Avatar:</label>
-					<input class="form-text hover-sfx" type="file" id="playerImage" data-hoversound="sounds/cursor.mp3">
+					<input class="file-input file-input-sm form-input hover-sfx" type="file" id="playerImage" data-hoversound="sounds/cursor.mp3">
 					<img class="w-8 h-8 hidden" id="playerImageDisplay" alt="Player Image">
 					</div>
 					
 					<div class="flex justify-center space-x-12 mt-4 p-2">
-						<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
-						<input class="form-button w-8 h-8 hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
+						<input class="btn btn-sm form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+						<input class="btn btn-sm form-input hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
 					</div>
 				`;
 
@@ -1025,7 +1025,7 @@ document.addEventListener("DOMContentLoaded", () => {
         formDisplay.innerHTML = `
 					<div class="form text-white rounded-lg rounded-tl-3xl p-4 w-7/8 bg-gradient-to-b from-secondary to- shadow-lg shadow-secondary/50  motion-reduced">
 					<h2 class="text-center font-bold mb-4">SELECT USER TO SUMMON</h2>
-					<select id="player-select" class="form-select mb-4 w-full form-text">
+					<select id="player-select" class="select form-input w-full">
 						<option value="">-- Select a User --</option>
 						<!-- Player options will be dynamically added here -->
 					</select>
@@ -1038,7 +1038,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-5" tabindex="0"></div>
 						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-6" tabindex="0"></div>
 					</div>
-					<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+					<input class="btn btn-sm form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
 				</div>
 				`;
         populatePartySlots(getPlayers(), getParty(), true);
@@ -1114,7 +1114,7 @@ document.addEventListener("DOMContentLoaded", () => {
 							<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-5" tabindex="0"></div>
 							<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-6" tabindex="0"></div>
 						</div>
-						<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+						<input class="btn btn-sm form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
 					</div>`;
         populatePartySlots(getPlayers(), getParty(), true);
         let formCancelerrr = document.getElementById("form-cancel");
@@ -1155,7 +1155,7 @@ document.addEventListener("DOMContentLoaded", () => {
 								<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-5" data-slot="slot5" tabindex="0"></div>
 								<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-6" data-slot="slot6" tabindex="0"></div>
 							</div>
-							<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+							<input class="btn btn-sm form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
 						</div>`;
         populatePartySlots(getPlayers(), getParty(), true);
         let formCancelerrrr = document.getElementById("form-cancel");
@@ -1209,8 +1209,8 @@ document.addEventListener("DOMContentLoaded", () => {
 					<div class="form text-white rounded-lg rounded-tl-3xl p-4 justify-items-center shadow-lg bg-gradient-to-b from-accent to- shadow-lg shadow-secondary/50  motion-reduced">  
 						<h2 class="text-center font-bold mb-4">Are you sure you want to permanately delete all Data? </h2>
 						<div class="w-full justify-center gap-6 flex">
-						<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
-						<input class="form-button w-8 h-8 hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
+						<input class="btn btn-sm form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+						<input class="btn btn-sm form-input hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
 					</div>
 				`;
         termtext(`<anim:term-pulse><color:yellow>Opening</color> <color:red>DATA RESET</color>.\n`);
@@ -1234,13 +1234,13 @@ document.addEventListener("DOMContentLoaded", () => {
         formDisplay.innerHTML = `
 					<div class="form text-xs text-white text-bold rounded-lg rounded-tl-3xl p-4 w-5/6 bg-gradient-to-b from-secondary to- shadow-lg shadow-secondary/50  motion-reduced">  
 						<h2 class="text-center font-bold text-lg mb-4">Edit User</h2>
-						<select id="player-select-inclusive" class="form-select mb-4 form-text w-full">
+						<select id="player-select-inclusive" class="select form-input mb-4 w-full">
 							<option value="">Select User</option>
 						</select>
 						<div id="user-form-content" class="hidden"></div>
 						<div class="flex justify-center space-x-12 mt-4 p-2">
-							<input class="form-button w-8 h-8 hover-sfx click-sfx" type="button" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
-							<input class="form-button w-8 h-8 hover-sfx hidden" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
+							<input class="btn btn-sm form-input hover-sfx click-sfx" type="button" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+							<input class="btn btn-sm form-input hover-sfx hidden" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
 						</div>
 					</div>
 				`;
@@ -1277,7 +1277,7 @@ document.addEventListener("DOMContentLoaded", () => {
             userFormContent.innerHTML = `
 							<div class="grid grid-cols-2 gap-2> 
 								<label for="Name">Edit Username:</label>  
-								<input class="form-text hover-sfx" type="text" id="Name" name="Name" maxlength="24" data-hoversound="sounds/cursor.mp3" placeholder="Your Name Please...">  
+								<input class="input input-sm form-input hover-sfx" type="text" id="Name" name="Name" maxlength="24" data-hoversound="sounds/cursor.mp3" placeholder="Your Name Please...">  
 							</div>
 							<br>
 							<div class="grid grid-cols-4 landscape:grid-cols-8 md:grid-cols-8 gap-2">
@@ -1532,12 +1532,12 @@ document.addEventListener("DOMContentLoaded", () => {
           formDisplay.innerHTML = `
           <div class="form text-white rounded-lg rounded-tl-3xl p-4 w-1/2 shadow-lg bg-gradient-to-b from-secondary to- shadow-lg shadow-secondary/50  motion-reduced">  
           <h2 class="text-center font-bold mb-4">SELECT USER TO DELETE</h2>
-          <select id="player-select-inclusive" class="form-select mb-4 form-text w-full">
+          <select id="player-select-inclusive" class="select form-input mb-4 w-full">
             <option value="">Select User</option>
           </select>
           <div class="w-full justify-center gap-6 flex">
-            <input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
-            <input class="form-button w-8 h-8 hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
+            <input class="btn btn-sm form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+            <input class="btn btn-sm form-input hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
           </div>
           </div>
         `;
@@ -1612,26 +1612,26 @@ document.addEventListener("DOMContentLoaded", () => {
 							<!-- Adjust Moon --> 
 							<label id="moon-label">Moon</label>  
 								<div class="flex justify-start items-center space-x-2 p-2">  
-								   <button id="phase-decrease" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>  
+								   <button id="phase-decrease" class="btn form-input btn-xs hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>  
 								   <span id="form-phase" class="mx-2">0</span>  
-								   <button id="phase-increase" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>   
+								   <button id="phase-increase" class="btn form-input btn-xs hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>   
 								</div>  
 								
 							<!-- Adjust Macca -->  
 							<label id="macca-label">Macca</label>
 							<div class="justify-start space-x-2 space-y-3">    
 								  
-								<input type="number" id="macca-form" placeholder="Macca" class="form-text w-full hover-sfx" min="0" data-hoversound="sounds/cursor.mp3">  
-								<div class="grid grid-cols-3 justify-left">
-									<button id="macca-decrease" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>
-									<button id="macca-increase" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>
-									<button id="macca-equal" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">=</button>
+								<input type="number" id="macca-form" placeholder="Macca" class="input form-input w-full hover-sfx" min="0" data-hoversound="sounds/cursor.mp3">  
+								<div class="grid grid-cols-3 justify-left space-x-2">
+									<button id="macca-decrease" class="btn btn-sm form-input hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>
+									<button id="macca-increase" class="btn btn-sm form-input hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>
+									<button id="macca-equal" class="btn btn-sm form-input hover-sfx" data-hoversound="sounds/cursor.mp3">=</button>
 								</div>
 							</div>  
 						</div>
 						<div class="w-full justify-left gap-6 flex">
-						<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
-						<input class="form-button w-8 h-8 hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
+						<input class="btn btn-sm form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+						<input class="btn btn-sm form-input hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
 						</div>
 					</div>
 				`;
@@ -2733,14 +2733,14 @@ document.addEventListener("DOMContentLoaded", () => {
 							</div>
 							<div>
 							<label for="system">Version</label>
-								<select id="system" name="system" class="select form-input hover-sfx w-full" data-hoversound="sounds/cursor.mp3">
+								<select id="system" name="system" class="select select-xs form-input hover-sfx w-full" data-hoversound="sounds/cursor.mp3">
 								  <option value="0">Devil City Tokyo</option>
 								  <option value="1">Tokyo Conception</option>
 								</select>
 							</div>
 
              <div class="dropdown" id="theme">
-              <div tabindex="0" role="button" class="btn form-input m-1 hover-sfx click-sfx" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Okay.mp3">
+              <div tabindex="0" role="button" class="btn btn-sm form-input m-1 hover-sfx click-sfx" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Okay.mp3">
                 Pick Theme
                 <svg width="12px" height="12px" class="inline-block h-2 w-2 fill-current opacity-60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
                   <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
@@ -2759,8 +2759,8 @@ document.addEventListener("DOMContentLoaded", () => {
 						</div>
 
 						<div class="w-full justify-center gap-6 p-4 flex">
-							<input class="btn form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
-							<input class="btn form-input hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
+							<input class="btn btn-sm form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+							<input class="btn btn-sm form-input hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
 						</div>
 					</div>
 				   `;

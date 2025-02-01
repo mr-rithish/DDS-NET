@@ -10,7 +10,7 @@ body {
     padding: 0;
 }
 .form-input {
-	@apply bg-base-300 border-neutral border-2 btn-sm;
+	@apply bg-base-300 border-neutral border-2 opacity-80;
   }
 .form-input:hover {
 	@apply bg-base-100 border-accent;
@@ -19,10 +19,11 @@ body {
 	@apply bg-base-100 border-accent;
 }
 .btn {
-	@apply btn-sm;
+	@apply font-bold;
 }
-.select {
-	@apply select-sm;
+.input {
+	@apply input-xs;
+	padding: .25rem;
 }
 
 .stat-bar {
