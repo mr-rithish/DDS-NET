@@ -742,12 +742,12 @@ document.addEventListener("DOMContentLoaded", () => {
         bottomDisplay.innerHTML = `
 					<div class="grid grid-cols-3 gap-2 flex p-4 party-menu motion-reduce" id="party-list">
 						<!-- Party Member Cards -->
-						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-1" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-2" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-3" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-4" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-5" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-6" tabindex="0"></div>
+						<div class="party-member card bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-1" tabindex="0"></div>
+						<div class="party-member card bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-2" tabindex="0"></div>
+						<div class="party-member card bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-3" tabindex="0"></div>
+						<div class="party-member card bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-4" tabindex="0"></div>
+						<div class="party-member card bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-5" tabindex="0"></div>
+						<div class="party-member card bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-6" tabindex="0"></div>
 					</div>
 					`;
         currentTab = null;
@@ -779,7 +779,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				  <!-- Status Dropdown -->  
 				  <div class="grid grid-cols-4 gap-2">  
 					<label>Status</label>  
-					<select id="form-status" class="select form-input hover-sfx w-16" data-hoversound="sounds/cursor.mp3">  
+					<select id="form-status" class="select select-xs form-input hover-sfx w-16" data-hoversound="sounds/cursor.mp3">  
 					   <option>Normal</option>  
 					   <option>Low_HP</option>  
 					   <option>Bind</option>  
@@ -1277,18 +1277,18 @@ document.addEventListener("DOMContentLoaded", () => {
             userFormContent.innerHTML = `
 							<div class="grid grid-cols-2 gap-2> 
 								<label for="Name">Edit Username:</label>  
-								<input class="input input-sm form-input hover-sfx" type="text" id="Name" name="Name" maxlength="24" data-hoversound="sounds/cursor.mp3" placeholder="Your Name Please...">  
+								<input class="input form-input hover-sfx" type="text" id="Name" name="Name" maxlength="24" data-hoversound="sounds/cursor.mp3" placeholder="Your Name Please...">  
 							</div>
 							<br>
 							<div class="grid grid-cols-4 landscape:grid-cols-8 md:grid-cols-8 gap-2">
 							<label for="Type">Type:</label>  
-								<select class="form-text w-16 hover-sfx" id="Type" name="Type" data-hoversound="sounds/cursor.mp3">  
+								<select class="select select-xs form-input w-16 hover-sfx" id="Type" name="Type" data-hoversound="sounds/cursor.mp3">  
 									<option value="Human">Human</option>  
 									<option value="Demon">Demon</option>  
 									<option value="Other">Other</option> 
 								</select>
 							<label for="Status">Status</label>  
-							<select id="Status" name="Type" class="form-text hover-sfx w-16" data-hoversound="sounds/cursor.mp3">  
+							<select id="Status" name="Type" class="select select-xs form-input hover-sfx w-16" data-hoversound="sounds/cursor.mp3">  
 							   <option>Normal</option>  
 							   <option>Low_HP</option>  
 							   <option>Bind</option>  
@@ -1308,61 +1308,60 @@ document.addEventListener("DOMContentLoaded", () => {
 							   <option>Stun</option>  
 							</select>  
 							<label for="Level">Level:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Level" name="Level" min="1" max="100" placeholder="1-100" data-hoversound="sounds/cursor.mp3" required> 
+							<input class="input form-input w-16 hover-sfx" type="number" id="Level" name="Level" min="1" max="100" placeholder="1-100" data-hoversound="sounds/cursor.mp3" required> 
 							<label for="Initiative">Initiative:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Initiative" name="Initiative" min="0" data-hoversound="sounds/cursor.mp3" required>
+							<input class="input form-input w-16 hover-sfx" type="number" id="Initiative" name="Initiative" min="0" data-hoversound="sounds/cursor.mp3" required>
 							<label for="HP_Max">Max HP:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="HP_Max" name="HP_Max" min="0" data-hoversound="sounds/cursor.mp3" required>
+							<input class="input form-input w-16 hover-sfx" type="number" id="HP_Max" name="HP_Max" min="0" data-hoversound="sounds/cursor.mp3" required>
 							<label for="HP_Current">Current HP:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="HP_Current" name="HP_Current" min="0" data-hoversound="sounds/cursor.mp3" required>  
+							<input class="input form-input w-16 hover-sfx" type="number" id="HP_Current" name="HP_Current" min="0" data-hoversound="sounds/cursor.mp3" required>  
 							<label for="MP_Max">Max MP:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="MP_Max" name="MP_Max" min="0" data-hoversound="sounds/cursor.mp3" required>  
+							<input class="input form-input w-16 hover-sfx" type="number" id="MP_Max" name="MP_Max" min="0" data-hoversound="sounds/cursor.mp3" required>  
 							<label for="MP_Current">Current MP:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="MP_Current" name="MP_Current" min="0" data-hoversound="sounds/cursor.mp3" required>  
+							<input class="input form-input w-16 hover-sfx" type="number" id="MP_Current" name="MP_Current" min="0" data-hoversound="sounds/cursor.mp3" required>  
 							<label for="Fate_Max">Max Fate:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Fate_Max" name="Fate_Max" min="0" data-hoversound="sounds/cursor.mp3" required>
+							<input class="input form-input w-16 hover-sfx" type="number" id="Fate_Max" name="Fate_Max" min="0" data-hoversound="sounds/cursor.mp3" required>
 							<label for="Fate_Current">Current Fate:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Fate_Current" name="Fate_Current" min="0" data-hoversound="sounds/cursor.mp3" required>
-							
+							<input class="input form-input w-16 hover-sfx" type="number" id="Fate_Current" name="Fate_Current" min="0" data-hoversound="sounds/cursor.mp3" required>
 							
 							<label for="Strength">Strength:</label>				
-							<input class="form-text w-16 hover-sfx" type="number" id="Strength" name="Strength" min="0" data-hoversound="sounds/cursor.mp3" required> 
+							<input class="input form-input w-16 hover-sfx" type="number" id="Strength" name="Strength" min="0" data-hoversound="sounds/cursor.mp3" required> 
 							<label for="Strength">STR TN:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="STR_TN" name="STR_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
+							<input class="input form-input w-16 hover-sfx" type="number" id="STR_TN" name="STR_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
 							<label for="Magic">Magic:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Magic" name="Magic" min="0" data-hoversound="sounds/cursor.mp3" required> 
+							<input class="input form-input w-16 hover-sfx" type="number" id="Magic" name="Magic" min="0" data-hoversound="sounds/cursor.mp3" required> 
 							<label for="Magic">MG TN:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="MG_TN" name="MG_TN" min="0" data-hoversound="sounds/cursor.mp3" required> 
+							<input class="input form-input w-16 hover-sfx" type="number" id="MG_TN" name="MG_TN" min="0" data-hoversound="sounds/cursor.mp3" required> 
 							<label for="Vitality">Vitality:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Vitality" name="Vitality" min="0" data-hoversound="sounds/cursor.mp3" required> 
+							<input class="input form-input w-16 hover-sfx" type="number" id="Vitality" name="Vitality" min="0" data-hoversound="sounds/cursor.mp3" required> 
 							<label for="Vitality">VT TN:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="VT_TN" name="VT_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
+							<input class="input form-input w-16 hover-sfx" type="number" id="VT_TN" name="VT_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
 							<label for="Agility">Agility:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Agility" name="Agility" min="0" data-hoversound="sounds/cursor.mp3" required>
+							<input class="input form-input w-16 hover-sfx" type="number" id="Agility" name="Agility" min="0" data-hoversound="sounds/cursor.mp3" required>
 							<label for="Agility">AG TN:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="AG_TN" name="AG_TN" min="0" data-hoversound="sounds/cursor.mp3" required>  
+							<input class="input form-input w-16 hover-sfx" type="number" id="AG_TN" name="AG_TN" min="0" data-hoversound="sounds/cursor.mp3" required>  
 							<label for="Luck">Luck:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Luck" name="Luck" min="0" data-hoversound="sounds/cursor.mp3" required>
+							<input class="input form-input w-16 hover-sfx" type="number" id="Luck" name="Luck" min="0" data-hoversound="sounds/cursor.mp3" required>
 							<label for="Luck">LK TN:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="LK_TN" name="LK_TN" min="0" data-hoversound="sounds/cursor.mp3" required> 
+							<input class="input form-input w-16 hover-sfx" type="number" id="LK_TN" name="LK_TN" min="0" data-hoversound="sounds/cursor.mp3" required> 
 
 							<label for="Melee_Power">Melee Power:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Melee_Power" name="Melee_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
+							<input class="input form-input w-16 hover-sfx" type="number" id="Melee_Power" name="Melee_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
 							<label for="Ranged_Power">Ranged Power:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Ranged_Power" name="Ranged_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
+							<input class="input form-input w-16 hover-sfx" type="number" id="Ranged_Power" name="Ranged_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
 							<label for="Magic_Power">Magic Power:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Magic_Power" name="Magic_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
+							<input class="input form-input w-16 hover-sfx" type="number" id="Magic_Power" name="Magic_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
 								 
 							<label for="Dodge_TN">Dodge TN:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Dodge_TN" name="Dodge_TN" min="0" data-hoversound="sounds/cursor.mp3" required>  
+							<input class="input form-input w-16 hover-sfx" type="number" id="Dodge_TN" name="Dodge_TN" min="0" data-hoversound="sounds/cursor.mp3" required>  
 							<label for="Talk_TN">Talk TN:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Talk_TN" name="Talk_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
+							<input class="input form-input w-16 hover-sfx" type="number" id="Talk_TN" name="Talk_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
 							</div>  
 							
 							<div class="mt-2">
 							<label for="playerImage">Edit Avatar:</label>
-							<input class="form-text hover-sfx" type="file" id="playerImage" data-hoversound="sounds/cursor.mp3">
-							<input class="form-button hover-sfx click-sfx h-7 w-14" type="button" id="image-remove" value="Remove" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Okay.mp3">
+							<input class="file-input form-input file-input-sm hover-sfx" type="file" id="playerImage" data-hoversound="sounds/cursor.mp3">
+							<input class="btn btn-sm form-input hover-sfx click-sfx" type="button" id="image-remove" value="Remove" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Okay.mp3">
 
 							</div>
 		      	`;
@@ -1528,7 +1527,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updatePlayerDropdowninclusive();
 
       break;
-      case "deleteuser":
+      case "deleteuser": // Fix dropdown later
           formDisplay.innerHTML = `
           <div class="form text-white rounded-lg rounded-tl-3xl p-4 w-1/2 shadow-lg bg-gradient-to-b from-secondary to- shadow-lg shadow-secondary/50  motion-reduced">  
           <h2 class="text-center font-bold mb-4">SELECT USER TO DELETE</h2>
@@ -1782,8 +1781,8 @@ document.addEventListener("DOMContentLoaded", () => {
 					  </div>
 					</div>
 					<div class="flex gap-6 p-4">
-						<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
-						<input class="form-button w-8 h-8 hover-sfx hidden" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
+						<input class="btn btn-sm form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+						<input class="btn btn-sm form-input hover-sfx hidden" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
 					</div>
 				</div>
 				`;
@@ -1836,14 +1835,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
               innerDisplay.innerHTML = `
 						<h2 class="text-center font-bold mb-4" id="form-title">${currentPlayer.Name}</h2>
-						<div id="formula-display" class="form-text bg-gray-700 text-white p-2 rounded mb-4">
+						<div id="formula-display" class="form-input p-2 rounded mb-4">
 						  Base (${baseTN}%) + Bonus (${bonus}%) + Fate (${fatePoints * 20}%) = <strong>${baseTN}% TN</strong>
 						</div>
 						<div class="grid grid-cols-3 gap-4 justify-items-center">
 							<div>
 							<label id="basetn-label" for="base_tn">Base TN</label>
 							
-							<select id="base_tn" name="base_tn" class="form-text hover-sfx w-16" data-hoversound="sounds/cursor.mp3">
+							<select id="base_tn" name="base_tn" class="select select-xs form-input hover-sfx w-16" data-hoversound="sounds/cursor.mp3">
 							  <option value="0">None (0 TN)</option>
 							  <option value="${currentPlayer.STR_TN}">Strength TN</option>
 							  <option value="${currentPlayer.MG_TN}">Magic TN</option>
@@ -1857,47 +1856,47 @@ document.addEventListener("DOMContentLoaded", () => {
 							
 							<div>
 							<label for="form-bonus">Bonus TN</label>
-							<input class="form-text w-16 hover-sfx" type="number" id="form-bonus" name="bonuses" data-hoversound="sounds/cursor.mp3" required>
+							<input class="input input-xs form-input w-16 hover-sfx" type="number" id="form-bonus" name="bonuses" data-hoversound="sounds/cursor.mp3" required>
 							</div>
 							<div class="flex justify-start items-center gap-2">
 							  <label>Use Fate ${currentPlayer.Fate_Current}/${currentPlayer.Fate_Max}</label>
-							  <button id="fate-decrease" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>
+							  <button id="fate-decrease" class="btn btn-xs form-input hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>
 							  <span id="form-fate" class="mx-2">0</span>
-							  <button id="fate-increase" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>
+							  <button id="fate-increase" class="btn btn-xs form-input hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>
 							
 							</div>
 							<div id="div-hp">
 								<label for="hp-cost">HP Cost</label>
-								<input class="form-text w-16 hover-sfx" type="number" id="hp-cost" name="hp_cost" min="0" data-hoversound="sounds/cursor.mp3" required>
+								<input class="input input-xs form-input w-16 hover-sfx" type="number" id="hp-cost" name="hp_cost" min="0" data-hoversound="sounds/cursor.mp3" required>
 							</div>
 							<div id="div-mp">
 								<label for="mp-cost">MP Cost</label>
-								<input class="form-text w-16 hover-sfx" type="number" id="mp-cost" name="mp_cost" min="0" data-hoversound="sounds/cursor.mp3" required>
+								<input class="input input-xs form-input w-16 hover-sfx" type="number" id="mp-cost" name="mp_cost" min="0" data-hoversound="sounds/cursor.mp3" required>
 							</div>
 							<div>
 							<div id="div-critbonus">
-								<input type="checkbox" id="critbonus" name="critbonus" value="critbonus">
+								<input type="checkbox" id="critbonus" name="critbonus" value="critbonus" class="align-middle checkbox checkbox-xs form-input down-14">
 								<label for="critbonus">Crit on 1/5</label>
 							</div>
 							</div>
 							</div>
-							<fieldset id="div-multivisor" class="flex items-center gap-4">
+							<fieldset id="div-multivisor" class="flex">
 							  <legend>Mod TN by</legend>
 							  <div>
 								<!-- None Option -->
-								<input id="none" class="peer/none" type="radio" name="afteropt" value="None" checked />
+								<input id="none" class="peer/none radio radio-sm align-middle" type="radio" name="afteropt" value="None" checked />
 								<label for="none" class="peer-checked:text-sky-500 cursor-pointer">None</label>
 
 								<!-- Multiply Option -->
-								<input id="multiply" class="peer/multiply" type="radio" name="afteropt" value="Multiply" />
+								<input id="multiply" class="peer/multiply radio radio-sm align-middle" type="radio" name="afteropt" value="Multiply" />
 								<label for="multiply" class="peer-checked:text-sky-500 cursor-pointer">Multiply</label>
 
 								<!-- Divide Option -->
-								<input id="divide" class="peer/divide" type="radio" name="afteropt" value="Divide" />
+								<input id="divide" class="peer/divide radio radio-sm align-middle" type="radio" name="afteropt" value="Divide" />
 								<label for="divide" class="peer-checked:text-sky-500 cursor-pointer">Divide</label>
 							  
 							  <!-- Multivisor Input -->
-								<input class="form-text w-8 hover-sfx p-1 border border-gray-400 rounded hidden" placeholder="#" type="number" id="multivisor" name="multivisor" min="1" data-hoversound="sounds/cursor.mp3" required/></div>
+								<input class="input form-input w-8 hover-sfx p-1 border border-gray-400 rounded hidden" placeholder="#" type="number" id="multivisor" name="multivisor" min="1" data-hoversound="sounds/cursor.mp3" required/></div>
 							</div>
 							</fieldset>
 					  `;
@@ -2437,8 +2436,8 @@ document.addEventListener("DOMContentLoaded", () => {
 					  </div>
 					</div>
 					<div class="w-full justify-center gap-6 p-4 flex">
-					<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
-					<input class="form-button w-8 h-8 hover-sfx hidden" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
+					<input class="btn btn-sm form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+					<input class="btn btn-sm form-input hover-sfx hidden" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
 					</div>
 				  </div>
 				`;
@@ -2486,13 +2485,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
               innerrDisplay.innerHTML = `
                 <h2 id="form-title" class="text-center font-bold mb-4">${currentPlayer.Name}</h2>
-                <div id="formula-display" class="form-text bg-gray-700 text-white p-2 rounded mb-4">
+                <div id="formula-display" class="form-input bg-gray-700 text-white p-2 rounded mb-4">
                   Base (${baseTN}) + Bonus (${bonus}) = <strong>${baseTN} + ${dice}d10 Power</strong>
                 </div>
                 <div class="grid grid-cols-3 gap-4 justify-items-center">
                   <div>
                   <label for="base_tn" id="basetn-label">Base Power</label>
-                  <select id="base_tn" name="base_tn" class="form-text hover-sfx w-16" data-hoversound="sounds/cursor.mp3">
+                  <select id="base_tn" name="base_tn" class="select select-xs form-input hover-sfx w-16" data-hoversound="sounds/cursor.mp3">
                     <option value="0">None (0)</option>
                     <option value="${currentPlayer.Melee_Power}">Melee Power</option>
                     <option value="${currentPlayer.Magic_Power}">Magic Power</option>
@@ -2503,22 +2502,22 @@ document.addEventListener("DOMContentLoaded", () => {
                   
                   <div>
                   <label for="form-bonus">Bonus Power</label>
-                  <input class="form-text w-16 hover-sfx" type="number" id="form-bonus" name="bonuses" data-hoversound="sounds/cursor.mp3" required>
+                  <input class="input form-input w-16 hover-sfx" type="number" id="form-bonus" name="bonuses" data-hoversound="sounds/cursor.mp3" required>
                   </div>
                   <div class="flex justify-start items-center gap-2">
                     <label>Dice</label>
-                    <button id="dice-decrease" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>
+                    <button id="dice-decrease" class="btn btn-xs form-input hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>
                     <span id="form-dice" class="mx-2">1d10</span>
                   
-                  <button id="dice-increase" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>
+                  <button id="dice-increase" class="btn btn-xs form-input hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>
                   </div>
                   <div id="div-hp">
                     <label for="hp-cost">HP Cost</label>
-                    <input class="form-text w-16 hover-sfx" type="number" id="hp-cost" name="hp_cost" min="0" data-hoversound="sounds/cursor.mp3" required>
+                    <input class="input form-input w-16 hover-sfx" type="number" id="hp-cost" name="hp_cost" min="0" data-hoversound="sounds/cursor.mp3" required>
                   </div>
                   <div id="div-mp">
                     <label for="mp-cost">MP Cost</label>
-                    <input class="form-text w-16 hover-sfx" type="number" id="mp-cost" name="mp_cost" min="0" data-hoversound="sounds/cursor.mp3" required>
+                    <input class="input form-input w-16 hover-sfx" type="number" id="mp-cost" name="mp_cost" min="0" data-hoversound="sounds/cursor.mp3" required>
                   </div>
                 
                   </div>
@@ -2526,19 +2525,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     <legend>Mod Result by</legend>
                     <div class="flex items-center gap-5">
                     <!-- None Option -->
-                    <input id="none" class="peer/none" type="radio" name="afteropt" value="None" checked />
+                    <input id="none" class="peer/none radio align-middle" type="radio" name="afteropt" value="None" checked />
                     <label for="none" class="peer-checked:text-sky-500 cursor-pointer">None</label>
 
                     <!-- Multiply Option -->
-                    <input id="multiply" class="peer/multiply" type="radio" name="afteropt" value="Multiply" />
+                    <input id="multiply" class="peer/multiply radio align-middle" type="radio" name="afteropt" value="Multiply" />
                     <label for="multiply" class="peer-checked:text-sky-500 cursor-pointer">Multiply</label>
 
                     <!-- Divide Option -->
-                    <input id="divide" class="peer/divide" type="radio" name="afteropt" value="Divide" />
+                    <input id="divide" class="peer/divide radio align-middle" type="radio" name="afteropt" value="Divide" />
                     <label for="divide" class="peer-checked:text-sky-500 cursor-pointer">Divide</label>
                     
                     <!-- Multivisor Input -->
-                    <input class="form-text w-8 hover-sfx p-1 border border-gray-400 rounded hidden" placeholder="#" type="number" id="multivisor" name="multivisor" min="1" data-hoversound="sounds/cursor.mp3" required/></div>
+                    <input class="input form-input w-8 hover-sfx p-1 border border-gray-400 rounded hidden" placeholder="#" type="number" id="multivisor" name="multivisor" min="1" data-hoversound="sounds/cursor.mp3" required/></div>
                   </div>
                 </fieldset>
               `;
