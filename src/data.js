@@ -1550,7 +1550,8 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         };
 
-		  
+	// Call the function to populate the dropdown
+        updatePlayerDropdowninclusivee();
 
         function userdelete() {
         const selectedId = playerSelectt.value;
