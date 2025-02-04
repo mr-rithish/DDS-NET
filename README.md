@@ -30,7 +30,7 @@
 
 ## **📕Introduction**
 
-DDS-NET is a party management and dice roller system for the Shin Megami Tensei Tabletop Roleplaying Game, though in the future will feature other TTRPGs such as Cyberpunk Red. The design is inspired by the classic SNES games and made to simulate a terminal display. Designed to run on any screen and system, even a Raspberry Pi 5. Running locally, you can even use API to interact with a connected Arduino, [creating a cyberdeck like my own](https://www.reddit.com/r/Megaten/comments/1hr6dyp/smt_ttrpg_arm_comp_making_your_own/). DDS-NET is a webapp made with Node.JS using Tailwind for CSS. You can try out DDS-NET online at [digitaldicesystem.net](https://digitaldicesystem.net). If you want to support the project, you can help with my hosting costs below!
+DDS-NET is a party management and dice roller system for the Shin Megami Tensei Tabletop Roleplaying Game, though in the future will feature other TTRPGs such as Cyberpunk Red. The design is inspired by the classic SNES games and made to simulate a terminal display. Designed to run on any screen and system, even a Raspberry Pi 5. Running locally, you can even use API to interact with a connected Arduino, [creating a cyberdeck like my own](https://www.reddit.com/r/Megaten/comments/1hr6dyp/smt_ttrpg_arm_comp_making_your_own/). DDS-NET is a webapp made with Node.JS using Tailwindcss with DaisyUI for CSS. You can try out DDS-NET online at [digitaldicesystem.net](https://digitaldicesystem.net). If you want to support the project, you can help with my hosting costs below!
 
 <a href='https://ko-fi.com/K3K319F19W' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
@@ -52,7 +52,7 @@ DDS-NET is a party management and dice roller system for the Shin Megami Tensei 
 
 3. ### ✅Run the server
 
-    After cloning this repository, open terminal to DDS-NET and run the server.
+    After cloning this repository, open terminal to your new DDS-NET directory and run the server by activating server.js!
 
     ```bash
     node server
@@ -83,7 +83,7 @@ Handles the termtext() function to simulate a terminal interface and bootup mess
 
 ### 📥DDS-NET/src/input.css
 
-Main file for changing the CSS for those familiar with tailwindcss.
+Main file for changing the CSS and themes for those familiar with tailwindcss.
 
 ### 🔊DDS-NET/src/sounds/
 
@@ -103,7 +103,7 @@ All data is saved into the browser using local storage. However, uploaded user i
 
 ## **🪄Custom UI**
 
-DDS-NET Uses [Tailwindcss](https://tailwindcss.com/docs/styling-with-utility-classes) to handle all the CSS heavy lifting. When making changes to the UI, update continuously using the simple command in /DDS-NET.
+DDS-NET Uses [Tailwindcss](https://tailwindcss.com/docs/styling-with-utility-classes) along with [DaisyUI](https://daisyui.com) to handle all the CSS heavy lifting. When making changes to the UI, update continuously using the simple command in /DDS-NET.
 
 ```bash
 npm run dev
@@ -143,11 +143,13 @@ MIT License
 
 ## 📝Changelog
 
+- **1.1** 💅UI Customization
+
 - **1.0** 🎉Release
 
 ## 🚗Roadmap
 
-- 💅UI Customization
+- ~~💅UI Customization~~
 
 - 📖Custom Skills & Compendium
 
