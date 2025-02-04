@@ -15,8 +15,23 @@ body {
 [data-theme="ddsnet"] .party-member {
 	@apply rounded-tl-2xl;
 }
+[data-theme="ddsnet"] .pic {
+	@apply rounded-tl-2xl;
+}
 [data-theme="ddsnet"] .tab-button {
-	@apply rounded-tl-xl;
+	@apply rounded-tl-2xl;
+}
+[data-theme="ddsnet"] .menu {
+	@apply rounded-tl-3xl;
+}
+[data-theme="ddsnet"] .form {
+	@apply rounded-tl-3xl;
+}
+[data-theme="ddsnet"] .menu-option {
+	@apply rounded-tr-3xl;
+}
+[data-theme="ddsnet"] .corner-button {
+	@apply rounded-tl-3xl;
 }
 .form-input {
 	@apply bg-base-300 border-neutral border-2 opacity-80;
@@ -56,24 +71,24 @@ body {
 	text-shadow: 4px 4px 4px black
 }
 .bar-bg {
-	@apply rounded rounded-tr-2xl;
+	@apply rounded rounded-tr-3xl;
     background-color: #000000;
     height: 8px;
     overflow: hidden;
     margin-top: 4px;
 }
 .bar-fill {
-	@apply rounded rounded-tr-2xl;
+	@apply rounded rounded-tr-3xl;
     background-color: #FA726C;
     height: 100%;
 }
 .bar-fill2 {
-	@apply rounded rounded-tr-2xl;
+	@apply rounded rounded-tr-3xl;
     background-color: #9BB1FF;
     height: 100%;
 }
 .bar-fill3 {
-	@apply rounded rounded-tr-2xl;
+	@apply rounded rounded-tr-3xl;
     background-color: #32a852;
     height: 100%;
 }
@@ -101,7 +116,7 @@ body {
 	animation: bounce .2s .5;
 }
 .party-member-selected {
-	@apply border-accent shadow-lg shadow-accent/50;
+	@apply outline-accent shadow-lg shadow-accent/50;
 	outline-style: double;
 	outline-width: 4px;
 	animation: bounce .2s .5;
@@ -169,7 +184,7 @@ body {
 	transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 .form {
-	@apply outline-secondary;
+	@apply outline-secondary card;
 	outline-style: double;
 	outline-width: 4px;
 	animation: scale-in-ver-top .2s 1;
@@ -192,7 +207,7 @@ body {
 .form-text:focus {
 	@apply outline-accent;
 }
-.form-button{
+.form-button {
 	@apply stroke-2 stroke-white;
 	opacity: 0.8;
 	outline-color: #fff;
@@ -215,14 +230,14 @@ body {
 }
 .menu
 {
-	@apply rounded rounded-tl-3xl outline-primary;
+	@apply outline-primary;
 	outline-style: double;
 	outline-width: 4px;
 	font-family: monospace;
 	animation: scale-out-ver-bottom .2s 1;
 }
 .menu-option {
-	@apply rounded rounded-tr-2xl;
+	@apply card;
 	padding: .25rem;
 	user-select: none;
 	cursor: pointer;
@@ -242,7 +257,7 @@ body {
 	animation: bounce .2s .5;
 }
 .corner-button {
-	@apply rounded-sm rounded-tl-2xl outline-secondary;
+	@apply outline-secondary;
 	outline-style: double;
 	outline-width: 4px;
 	color: white;
