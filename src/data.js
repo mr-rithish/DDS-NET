@@ -273,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         partySlot.innerHTML = `
 		    <div class="flex items-center justify-center cursor-pointer h-full">
-		    <p class="p-5 text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-700 font-bold truncate flex-shrink">EMPTY</p></div>`;
+		    <p class="p-5 text-xl sm:text-2xl md:text-3xl lg:text-4xl text-base-100 font-bold truncate flex-shrink">EMPTY</p></div>`;
       }
     }
     if (!noevent) {
@@ -809,7 +809,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				  </div>  
 				  
 				  <!-- Buttons -->  
-				  <div class="flex justify-start space-x-4 mt-4 w-full">  
+				  <div class="flex justify-center space-x-4 mt-4 w-full">  
 					<button id="form-cancel" class="btn btn-sm btn-square form-input click-sfx hover-sfx" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3" data-volume="0.5">X</button>  
 					<button id="form-confirm" class="btn btn-sm btn-square form-input click-sfx hover-sfx" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Okay.mp3" data-volume="0.5">✔</button>  
 				  </div>  
@@ -2748,6 +2748,14 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
               <ul tabindex="0" class="dropdown-content bg-base-300 rounded-box z-[1] w-52 p-2 shadow-2xl max-h-60 overflow-y-auto">
                 <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="DDS-NET" value="ddsnet"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Diamond Realm" value="diamondrealm"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Tokyo Conception" value="tokyoconception"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Mikado Samurai" value="mikadosamurai"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Nahonbino" value="nahobino"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Arctic Journey" value="arcticjourney"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Velvet Moonlight" value="velvetmoonlight"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Golden Glow" value="goldenglow"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Phantom Thief" value="phantomthief"></li>
                 <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Business" value="business"></li>
                 <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Synthwave" value="synthwave"></li>
                 <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Halloween" value="halloween"></li>
