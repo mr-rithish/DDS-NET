@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
       macca: 100,
       rules: 0, // 0 = X, 1 = TC
       username: "<USER>",
-      config1: 0,
+      config1: "ddsnet", // Theme, 0 = DDS
       config2: 0,
       config3: 0,
       config4: 0,
@@ -128,6 +128,19 @@ document.addEventListener("DOMContentLoaded", () => {
 	
   const sys = getSystem();
   const user = sys.username;
+  const theme = sys.config1;
+
+  if (theme === 0 || theme === undefined) // Adapts old versions of system data.
+  {
+    console.log("Adjusted Theme to Default")
+    sys.config1 = "ddsnet";
+    setSystem(sys);
+    document.documentElement.setAttribute('data-theme', "ddsnet");
+  }
+  else{
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+
 
   // Generates the 6 slots using the ID's in the "party" data
   function populatePartySlots(players, party, noevent = false) {
@@ -144,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (player.Status === "Normal") {
               icon = "Low_Hp.png";
             }
-			document.getElementById(`party-slot-${i}`).classList.remove(`from-teal-900`);
+			document.getElementById(`party-slot-${i}`).classList.remove(`from-primary`);
 			document.getElementById(`party-slot-${i}`).classList.add(`from-red-600`);
           }
           if (player.HP_Current === 0 || player.Status === "Dead") {
@@ -211,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			<div class="flex justify-center gap-3 cursor-pointer click-sfx w-full h-full" data-clicksound="sounds/Okay.mp3" data-volume="0.5">
 			
 			<div class="space-y-3">
-				<img alt="${player.Name}" class="xs:min-w-6 sm:size-7 sm:min-w-7 md:min-w-8 md:size-8 size-6 hidden rounded rounded-tl-2xl shadow-lg border-4 border-double border-white" id="avatar-${i}">
+				<img alt="${player.Name}" class="pic card xs:min-w-6 sm:size-7 sm:min-w-7 md:min-w-8 md:size-8 size-6 hidden border-4 border-double border-neutral" id="avatar-${i}">
 				<img src="views/${icon}" alt="${player.Status}" class="xs:min-w-7 sm:size-8 sm:min-w-8 md:min-w-9 md:size-9 size-7">
 			</div>
 			
@@ -260,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         partySlot.innerHTML = `
 		    <div class="flex items-center justify-center cursor-pointer h-full">
-		    <p class="p-5 text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-700 font-bold truncate flex-shrink">EMPTY</p></div>`;
+		    <p class="p-5 text-xl sm:text-2xl md:text-3xl lg:text-4xl text-base-100 font-bold truncate flex-shrink">EMPTY</p></div>`;
       }
     }
     if (!noevent) {
@@ -395,14 +408,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		triggerLED('/led/comp');
         bottomDisplay.innerHTML = `
 					<div class="flex justify-center p-4  motion-reduced">
-						<div class="menu grid grid-cols-2 gap-2 flex bg-gradient-to-b shadow-lg from-slate-950 to- bg-#000 p-4 w-full text-white rounded-md bg-opacity-50 shadow-lg shadow-teal-900/50">
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" id="createuser-button" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Okay.mp3" data-volume="0.5">Create User</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" id="deleteusers-button" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Okay.mp3" data-volume="0.5">Delete User</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" id="summonuser-button" data-clicksound="sounds/Okay.mp3">Summon User</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" id="returnuser-button" data-clicksound="sounds/Okay.mp3">Return User</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="resetdata-button">Reset Data</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="autorecover-button">Auto Recover</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" id="cancel-button" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3" data-volume="0.5">Cancel</div>
+						<div class="menu card grid grid-cols-2 gap-2 flex bg-gradient-to-b shadow-lg from-slate-950 to- bg-#000 p-4 w-full text-white rounded-md bg-opacity-50 shadow-lg shadow-primary/50">
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" id="createuser-button" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Okay.mp3" data-volume="0.5">Create User</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" id="deleteusers-button" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Okay.mp3" data-volume="0.5">Delete User</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" id="summonuser-button" data-clicksound="sounds/Okay.mp3">Summon User</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" id="returnuser-button" data-clicksound="sounds/Okay.mp3">Return User</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="resetdata-button">Reset Data</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="autorecover-button">Auto Recover</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" id="cancel-button" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3" data-volume="0.5">Cancel</div>
 						</div>
 					</div>
 				`;
@@ -476,19 +489,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         break;
       case "fight":
-		termtext(`<color:green>DDS-NET@${user}</color>:<color:blue>~/FIGHT</color>$ Opening Combat protocol.\n`);
-		triggerLED('/led/fight');
+        termtext(`<color:green>DDS-NET@${user}</color>:<color:blue>~/FIGHT</color>$ Opening Combat protocol.\n`);
+        triggerLED('/led/fight');
         bottomDisplay.innerHTML = `
 					<div class="flex justify-center p-4  motion-reduced">
-						<div class="menu grid grid-cols-2 gap-2 flex bg-gradient-to-b shadow-lg from-slate-950 to- bg-#000 p-4 w-full text-white rounded-md bg-opacity-50 shadow-teal-900/50">
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="melee-button">Melee Attack</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="meleep-button">Melee Power</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="magic-button">Magic Attack</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="magicp-button">Magic Power</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="ranged-button">Ranged Attack</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="rangedp-button">Ranged Power</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="evade-button">Evade Roll</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" id="cancel-button" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3" data-volume="0.5">Cancel</div>
+						<div class="menu card grid grid-cols-2 gap-2 flex bg-gradient-to-b shadow-lg from-slate-950 to- bg-#000 p-4 w-full text-white rounded-md bg-opacity-50 shadow-primary/50">
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="melee-button">Melee Attack</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="meleep-button">Melee Power</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="magic-button">Magic Attack</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="magicp-button">Magic Power</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="ranged-button">Ranged Attack</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="rangedp-button">Ranged Power</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="evade-button">Evade Roll</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" id="cancel-button" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3" data-volume="0.5">Cancel</div>
 						</div>
 					</div>
 				`;
@@ -546,14 +559,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		triggerLED('/led/skills');
         bottomDisplay.innerHTML = `
 					<div class="flex justify-center p-4  motion-reduced">
-						<div class="menu grid grid-cols-2 gap-2 flex bg-gradient-to-b shadow-lg from-slate-950 to- bg-#000 p-4 w-full text-white rounded-md bg-opacity-50 shadow-teal-900/50">
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" id="tnroll-button" data-clicksound="sounds/Okay.mp3">Target Number Roll</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" id="proll-button" data-clicksound="sounds/Okay.mp3">Power Roll</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" id="talk-button" data-clicksound="sounds/Okay.mp3">Talk Roll</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="initiative-button">Initiative Roll</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" id="recover-button" data-clicksound="sounds/Okay.mp3">Recovery Roll</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" id="surprise-button" data-clicksound="sounds/Okay.mp3">Encounter Roll</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" id="cancel-button" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3" data-volume="0.5">Cancel</div>
+						<div class="menu card grid grid-cols-2 gap-2 flex bg-gradient-to-b shadow-lg from-slate-950 to- bg-#000 p-4 w-full text-white rounded-md bg-opacity-50 shadow-primary/50">
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" id="tnroll-button" data-clicksound="sounds/Okay.mp3">Target Number Roll</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" id="proll-button" data-clicksound="sounds/Okay.mp3">Power Roll</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" id="talk-button" data-clicksound="sounds/Okay.mp3">Talk Roll</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="initiative-button">Initiative Roll</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" id="recover-button" data-clicksound="sounds/Okay.mp3">Recovery Roll</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" id="surprise-button" data-clicksound="sounds/Okay.mp3">Encounter Roll</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" id="cancel-button" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3" data-volume="0.5">Cancel</div>
 						</div>
 					</div>
 				`;
@@ -605,12 +618,12 @@ document.addEventListener("DOMContentLoaded", () => {
 		triggerLED('/led/status');
         bottomDisplay.innerHTML = `
 					<div class="flex justify-center p-4  motion-reduced">
-						<div class="menu grid grid-cols-2 gap-2 flex bg-gradient-to-b shadow-lg from-slate-950 to- bg-#000 p-4 w-full text-white rounded-md bg-opacity-50 shadow-teal-900/50">
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="edituser-button">Edit User</div>
-							<!-- <div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3">Export Users (WIP)</div> -->
-							<!-- <div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3">Import Users (WIP)</div> -->
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="help-button">Help</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" id="cancel-button" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3" data-volume="0.5">Cancel</div>
+						<div class="menu card grid grid-cols-2 gap-2 flex bg-gradient-to-b shadow-lg from-slate-950 to- bg-#000 p-4 w-full text-white rounded-md bg-opacity-50 shadow-primary/50">
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="edituser-button">Edit User</div>
+							<!-- <div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3">Export Users (WIP)</div> -->
+							<!-- <div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3">Import Users (WIP)</div> -->
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="help-button">Help</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" id="cancel-button" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3" data-volume="0.5">Cancel</div>
 						</div>
 					</div>
 				`;
@@ -638,11 +651,11 @@ document.addEventListener("DOMContentLoaded", () => {
 		triggerLED('/led/change');
         bottomDisplay.innerHTML = `
 					<div class="flex justify-center p-4  motion-reduced">
-						<div class="menu grid grid-cols-2 gap-2 flex bg-gradient-to-b shadow-lg from-slate-950 to- bg-#000 p-4 w-full text-white rounded-md bg-opacity-50 shadow-teal-900/50">
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="reorder-button">Party Order</div>
-							<!-- <div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3">Export Log (WIP)</div> -->
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="config-button">Config</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" id="cancel-button" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3" data-volume="0.5">Cancel</div>
+						<div class="menu card grid grid-cols-2 gap-2 flex bg-gradient-to-b shadow-lg from-slate-950 to- bg-#000 p-4 w-full text-white rounded-md bg-opacity-50 shadow-primary/50">
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="reorder-button">Party Order</div>
+							<!-- <div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3">Export Log (WIP)</div> -->
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="config-button">Config</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" id="cancel-button" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3" data-volume="0.5">Cancel</div>
 						</div>
 					</div>
 				`;
@@ -670,14 +683,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		triggerLED('/led/help');
         bottomDisplay.innerHTML = `
 					<div class="flex justify-center p-4  motion-reduced">
-						<div class="menu grid grid-cols-2 gap-2 flex bg-gradient-to-b shadow-lg from-slate-950 to- bg-#000 p-4 w-full text-white rounded-md bg-opacity-50 shadow-teal-900/50">
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="about-button">About DDS-NET</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="support-button">Feedback / Contribution</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="creation-button">Character Creation</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="rolling-button">Dice Rolling</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="management-button">Party Management</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="controls-button">Keyboard Controls</div>
-							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-red-500/50" id="cancel-button" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3" data-volume="0.5">Cancel</div>
+						<div class="menu card grid grid-cols-2 gap-2 flex bg-gradient-to-b shadow-lg from-slate-950 to- bg-#000 p-4 w-full text-white rounded-md bg-opacity-50 shadow-primary/50">
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="about-button">About DDS-NET</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="support-button">Feedback / Contribution</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="creation-button">Character Creation</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="rolling-button">Dice Rolling</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="management-button">Party Management</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" data-hoversound="sounds/cursor.mp3" data-volume="0.5" data-clicksound="sounds/Okay.mp3" id="controls-button">Keyboard Controls</div>
+							<div tabindex="0" class="menu-option hover-sfx click-sfx hover:shadow-md hover:shadow-accent/50" id="cancel-button" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3" data-volume="0.5">Cancel</div>
 						</div>
 					</div>
 				`;
@@ -729,12 +742,12 @@ document.addEventListener("DOMContentLoaded", () => {
         bottomDisplay.innerHTML = `
 					<div class="grid grid-cols-3 gap-2 flex p-4 party-menu motion-reduce" id="party-list">
 						<!-- Party Member Cards -->
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-1" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-2" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-3" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-4" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-5" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-6" tabindex="0"></div>
+						<div class="party-member card bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-1" tabindex="0"></div>
+						<div class="party-member card bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-2" tabindex="0"></div>
+						<div class="party-member card bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-3" tabindex="0"></div>
+						<div class="party-member card bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-4" tabindex="0"></div>
+						<div class="party-member card bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-5" tabindex="0"></div>
+						<div class="party-member card bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-6" tabindex="0"></div>
 					</div>
 					`;
         currentTab = null;
@@ -752,21 +765,21 @@ document.addEventListener("DOMContentLoaded", () => {
         currentPlayer = mode;
         termtext(`<color:yellow>Opening</color> Data Analyzer for <color:blue>${currentPlayer.Name}</color>.\n`);
         formDisplay.innerHTML = `  
-			   <div class="form text-bold text-white rounded-lg rounded-tl-3xl p-4 bg-gradient-to-b from-blue-800 to- shadow-lg shadow-blue-800/50  motion-reduced">  
+			   <div class="form text-bold text-white p-4 bg-gradient-to-b from-secondary to- shadow-lg shadow-secondary/50  motion-reduced">  
 				  <h1 class="text-center font-bold" id="form-player-name">Adjust Player</h2> 
 				  <div class="italic text-xs mb-2">Lower HP & MP Use Negative Values to Heal</div>
 
 				  <!-- Adjust HP & MP -->  
-				  <div class="mb-2 grid grid-cols-4 gap-2">  
+				  <div class="mb-2 grid grid-cols-4 gap-2 max-w-80">  
 					<label>HP</label>  
-					<input type="number" id="form-hp" class="form-text w-16 hover-sfx" data-hoversound="sounds/cursor.mp3">  
+					<input type="number" id="form-hp" class="input form-input hover-sfx" data-hoversound="sounds/cursor.mp3">  
 					<label>MP</label>  
-					<input type="number" id="form-mp" class="form-text w-16 hover-sfx" data-hoversound="sounds/cursor.mp3">  
+					<input type="number" id="form-mp" class="input form-input hover-sfx" data-hoversound="sounds/cursor.mp3">  
 				  </div>  
 				  <!-- Status Dropdown -->  
-				  <div class="grid grid-cols-4 gap-2">  
+				  <div class="grid grid-cols-4 gap-2 max-w-80">  
 					<label>Status</label>  
-					<select id="form-status" class="form-text hover-sfx w-16" data-hoversound="sounds/cursor.mp3">  
+					<select id="form-status" class="select select-xs max-w-xs form-input hover-sfx" data-hoversound="sounds/cursor.mp3">  
 					   <option>Normal</option>  
 					   <option>Low_HP</option>  
 					   <option>Bind</option>  
@@ -789,16 +802,16 @@ document.addEventListener("DOMContentLoaded", () => {
 				  <!-- Adjust Fate -->  
 					<label>Fate</label>  
 					<div class="flex justify-start items-center space-x-2">  
-					   <button id="fate-decrease" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>  
+					   <button id="fate-decrease" class="btn form-input btn-xs btn-square hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>  
 					   <span id="form-fate" class="mx-2">0</span>  
-					   <button id="fate-increase" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>   
+					   <button id="fate-increase" class="btn btn-xs btn-square form-input hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>   
 				  </div>  
 				  </div>  
 				  
 				  <!-- Buttons -->  
-				  <div class="flex justify-start space-x-4 mt-4 w-full">  
-					<button id="form-cancel" class="form-button w-8 h-8 click-sfx hover-sfx" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3" data-volume="0.5">X</button>  
-					<button id="form-confirm" class="form-button w-8 h-8 click-sfx hover-sfx" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Okay.mp3" data-volume="0.5">✔</button>  
+				  <div class="flex justify-center space-x-4 mt-4 w-full">  
+					<button id="form-cancel" class="btn btn-sm btn-square form-input click-sfx hover-sfx" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3" data-volume="0.5">X</button>  
+					<button id="form-confirm" class="btn btn-sm btn-square form-input click-sfx hover-sfx" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Okay.mp3" data-volume="0.5">✔</button>  
 				  </div>  
 			   </div>  
 				`;
@@ -808,75 +821,75 @@ document.addEventListener("DOMContentLoaded", () => {
       case "usercreation":
         termtext(`<color:yellow>Opening</color> User Creator.\n`);
         formDisplay.innerHTML = ` 
-				<div class="form text-xs text-white text-bold rounded-lg rounded-tl-3xl p-4 w-5/6 bg-gradient-to-b from-blue-800 to- shadow-lg shadow-blue-800/50  motion-reduced">  
+				<div class="form text-xs text-white place-items-center text-bold p-4 max-w-[640px] bg-gradient-to-b from-secondary to- shadow-lg shadow-secondary/50  motion-reduced">  
 					<h2 class="text-center font-bold text-lg mb-4">Register New User</h2> 
-					<div class="grid grid-cols-2 gap-2> 
+					<div class="grid grid-cols-2 gap-2 max-w-96 md:max-w-none> 
 						<label for="Name">Input Username:</label>  
-						<input class="form-text hover-sfx" type="text" id="Name" name="Name" maxlength="24" data-hoversound="sounds/cursor.mp3" placeholder="Your Name Please...">  
+						<input class="input form-input hover-sfx" type="text" id="Name" name="Name" maxlength="24" data-hoversound="sounds/cursor.mp3" placeholder="Your Name Please...">  
 					</div>
 					<br>
-					<div class="grid grid-cols-4 landscape:grid-cols-8 md:grid-cols-8 gap-2">
+					<div class="grid grid-cols-4 landscape:grid-cols-8 md:grid-cols-8 gap-2 max-w-96 md:max-w-none">
 					<label for="Type">Type:</label>  
-						<select class="form-text w-16 hover-sfx" id="Type" name="Type" data-hoversound="sounds/cursor.mp3">  
+						<select class="select select-xs form-input hover-sfx" id="Type" name="Type" data-hoversound="sounds/cursor.mp3">  
 							<option value="Human">Human</option>  
 							<option value="Demon">Demon</option>  
 							<option value="Other">Other</option> 
 						</select>
 					<label for="Level">Level:</label>  
-					<input class="form-text w-16 hover-sfx" type="number" id="Level" name="Level" min="1" max="100" placeholder="1-100" data-hoversound="sounds/cursor.mp3" required> 
+					<input class="input form-input hover-sfx" type="number" id="Level" name="Level" min="1" max="100" placeholder="1-100" data-hoversound="sounds/cursor.mp3" required> 
 					
 					<label for="HP_Max">Max HP:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="VT+L*m" type="number" id="HP_Max" name="HP_Max" min="0" data-hoversound="sounds/cursor.mp3" required>  
+					<input class="input form-input hover-sfx" placeholder="VT+L*m" type="number" id="HP_Max" name="HP_Max" min="0" data-hoversound="sounds/cursor.mp3" required>  
 					<label for="MP_Max">Max MP:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="MG+L*m" type="number" id="MP_Max" name="MP_Max" min="0" data-hoversound="sounds/cursor.mp3" required>  
+					<input class="input form-input hover-sfx" placeholder="MG+L*m" type="number" id="MP_Max" name="MP_Max" min="0" data-hoversound="sounds/cursor.mp3" required>  
 					
 					<label for="Fate_Max">Max Fate:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="LK/5+5" type="number" id="Fate_Max" name="Fate_Max" min="0" data-hoversound="sounds/cursor.mp3" required>
+					<input class="input form-input hover-sfx" placeholder="LK/5+5" type="number" id="Fate_Max" name="Fate_Max" min="0" data-hoversound="sounds/cursor.mp3" required>
 					<label for="Initiative">Initiative:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="AG+L/2" type="number" id="Initiative" name="Initiative" min="0" data-hoversound="sounds/cursor.mp3" required>
+					<input class="input form-input hover-sfx" placeholder="AG+L/2" type="number" id="Initiative" name="Initiative" min="0" data-hoversound="sounds/cursor.mp3" required>
 					<label for="Strength">Strength:</label>				
-					<input class="form-text w-16 hover-sfx" placeholder="0-40" type="number" id="Strength" name="Strength" min="0" data-hoversound="sounds/cursor.mp3" required> 
+					<input class="input form-input hover-sfx" placeholder="0-40" type="number" id="Strength" name="Strength" min="0" data-hoversound="sounds/cursor.mp3" required> 
 					<label for="Strength">STR TN:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="ST*5+L" type="number" id="STR_TN" name="STR_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
+					<input class="input form-input hover-sfx" placeholder="ST*5+L" type="number" id="STR_TN" name="STR_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
 					<label for="Magic">Magic:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="0-40" type="number" id="Magic" name="Magic" min="0" data-hoversound="sounds/cursor.mp3" required> 
+					<input class="input form-input hover-sfx" placeholder="0-40" type="number" id="Magic" name="Magic" min="0" data-hoversound="sounds/cursor.mp3" required> 
 					<label for="Magic">MG TN:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="MG*5+L" type="number" id="MG_TN" name="MG_TN" min="0" data-hoversound="sounds/cursor.mp3" required> 
+					<input class="input form-input hover-sfx" placeholder="MG*5+L" type="number" id="MG_TN" name="MG_TN" min="0" data-hoversound="sounds/cursor.mp3" required> 
 					<label for="Vitality">Vitality:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="0-40" type="number" id="Vitality" name="Vitality" min="0" data-hoversound="sounds/cursor.mp3" required> 
+					<input class="input form-input hover-sfx" placeholder="0-40" type="number" id="Vitality" name="Vitality" min="0" data-hoversound="sounds/cursor.mp3" required> 
 					<label for="Vitality">VT TN:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="VT*5+L" type="number" id="VT_TN" name="VT_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
+					<input class="input form-input hover-sfx" placeholder="VT*5+L" type="number" id="VT_TN" name="VT_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
 					<label for="Agility">Agility:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="0-40" type="number" id="Agility" name="Agility" min="0" data-hoversound="sounds/cursor.mp3" required>
+					<input class="input form-input hover-sfx" placeholder="0-40" type="number" id="Agility" name="Agility" min="0" data-hoversound="sounds/cursor.mp3" required>
 					<label for="Agility">AG TN:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="AG*5+L" type="number" id="AG_TN" name="AG_TN" min="0" data-hoversound="sounds/cursor.mp3" required>  
+					<input class="input form-input hover-sfx" placeholder="AG*5+L" type="number" id="AG_TN" name="AG_TN" min="0" data-hoversound="sounds/cursor.mp3" required>  
 					<label for="Luck">Luck:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="0-40" type="number" id="Luck" name="Luck" min="0" data-hoversound="sounds/cursor.mp3" required>
+					<input class="input form-input hover-sfx" placeholder="0-40" type="number" id="Luck" name="Luck" min="0" data-hoversound="sounds/cursor.mp3" required>
 					<label for="Luck">LK TN:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="LK*5+L" type="number" id="LK_TN" name="LK_TN" min="0" data-hoversound="sounds/cursor.mp3" required> 
+					<input class="input form-input hover-sfx" placeholder="LK*5+L" type="number" id="LK_TN" name="LK_TN" min="0" data-hoversound="sounds/cursor.mp3" required> 
 
 					<label for="Melee_Power">Melee Power:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="ST+L" type="number" id="Melee_Power" name="Melee_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
+					<input class="input form-input hover-sfx" placeholder="ST+L" type="number" id="Melee_Power" name="Melee_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
 					<label for="Magic_Power">Magic Power:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="MG+L" type="number" id="Magic_Power" name="Magic_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
+					<input class="input form-input hover-sfx" placeholder="MG+L" type="number" id="Magic_Power" name="Magic_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
 					<label for="Ranged_Power">Ranged Power:</label>  
-					<input class="form-text w-16 hover-sfx" placeholder="AG" type="number" id="Ranged_Power" name="Ranged_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
+					<input class="input form-input hover-sfx" placeholder="AG" type="number" id="Ranged_Power" name="Ranged_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
 					
 					<label for="Dodge_TN">Dodge TN:</label>  
-					<input class="form-text w-16 hover-sfx" type="number" placeholder="AG+10" id="Dodge_TN" name="Dodge_TN" min="0" data-hoversound="sounds/cursor.mp3" required>  
+					<input class="input form-input hover-sfx" type="number" placeholder="AG+10" id="Dodge_TN" name="Dodge_TN" min="0" data-hoversound="sounds/cursor.mp3" required>  
 					<label for="Talk_TN">Talk TN:</label>  
-					<input class="form-text w-16 hover-sfx" type="number" placeholder="LK*2+20" id="Talk_TN" name="Talk_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
+					<input class="input form-input hover-sfx" type="number" placeholder="LK*2+20" id="Talk_TN" name="Talk_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
 					</div>  
 					
 					<div class="mt-2">
 					<label for="playerImage">Add Avatar:</label>
-					<input class="form-text hover-sfx" type="file" id="playerImage" data-hoversound="sounds/cursor.mp3">
+					<input class="file-input file-input-sm form-input hover-sfx" type="file" id="playerImage" data-hoversound="sounds/cursor.mp3">
 					<img class="w-8 h-8 hidden" id="playerImageDisplay" alt="Player Image">
 					</div>
 					
 					<div class="flex justify-center space-x-12 mt-4 p-2">
-						<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
-						<input class="form-button w-8 h-8 hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
+						<input class="btn btn-sm btn-square form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+						<input class="btn btn-sm btn-square form-input hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
 					</div>
 				`;
 
@@ -1010,22 +1023,22 @@ document.addEventListener("DOMContentLoaded", () => {
       case "summonuser":
         termtext(`<color:yellow>Opening</color> Summoning Program.\n`);
         formDisplay.innerHTML = `
-					<div class="form text-white rounded-lg rounded-tl-3xl p-4 w-7/8 bg-gradient-to-b from-blue-800 to- shadow-lg shadow-blue-800/50  motion-reduced">
+					<div class="form text-white p-4 w-7/8 bg-gradient-to-b from-secondary to- shadow-lg shadow-secondary/50  motion-reduced">
 					<h2 class="text-center font-bold mb-4">SELECT USER TO SUMMON</h2>
-					<select id="player-select" class="form-select mb-4 w-full form-text">
+					<select id="player-select" class="select form-input w-full">
 						<option value="">-- Select a User --</option>
 						<!-- Player options will be dynamically added here -->
 					</select>
 					<div class="grid grid-cols-3 gap-2 flex p-4" id="empty-slot-list">
 						<!-- Empty Party Slot Cards -->
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-1" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-2" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-3" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-4" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-5" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-6" tabindex="0"></div>
+						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-1" tabindex="0"></div>
+						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-2" tabindex="0"></div>
+						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-3" tabindex="0"></div>
+						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-4" tabindex="0"></div>
+						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-5" tabindex="0"></div>
+						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-6" tabindex="0"></div>
 					</div>
-					<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+					<input class="btn btn-sm btn-square place-self-center form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
 				</div>
 				`;
         populatePartySlots(getPlayers(), getParty(), true);
@@ -1090,18 +1103,18 @@ document.addEventListener("DOMContentLoaded", () => {
       case "returnuser":
         termtext(`<color:yellow>Opening</color> Return Program.\n`);
         formDisplay.innerHTML = `
-					<div class="form text-white rounded-lg rounded-tl-3xl p-4 w-7/8 bg-gradient-to-b from-blue-800 to- shadow-lg shadow-blue-800/50  motion-reduced">
+					<div class="form text-white p-4 w-7/8 bg-gradient-to-b from-secondary to- shadow-lg shadow-secondary/50  motion-reduced">
 					<h2 class="text-center font-bold mb-4">SELECT USER TO RETURN</h2>
 						<div class="grid grid-cols-3 gap-2 flex p-4" id="party-list">
 							<!-- Party Member Cards -->
-							<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-1" tabindex="0"></div>
-							<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-2" tabindex="0"></div>
-							<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-3" tabindex="0"></div>
-							<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-4" tabindex="0"></div>
-							<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-5" tabindex="0"></div>
-							<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-6" tabindex="0"></div>
+							<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-1" tabindex="0"></div>
+							<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-2" tabindex="0"></div>
+							<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-3" tabindex="0"></div>
+							<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-4" tabindex="0"></div>
+							<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-5" tabindex="0"></div>
+							<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-6" tabindex="0"></div>
 						</div>
-						<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+						<input class="btn btn-sm btn-square place-self-center form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
 					</div>`;
         populatePartySlots(getPlayers(), getParty(), true);
         let formCancelerrr = document.getElementById("form-cancel");
@@ -1131,18 +1144,18 @@ document.addEventListener("DOMContentLoaded", () => {
       case "reorder":
         termtext(`<color:yellow>Opening</color> Swap Program.\n`);
         formDisplay.innerHTML = `
-					<div class="form text-white rounded-lg rounded-tl-3xl p-4 w-7/8 bg-gradient-to-b from-blue-800 to- shadow-lg shadow-blue-800/50  motion-reduced">
+					<div class="form text-white p-4 w-7/8 bg-gradient-to-b from-secondary to- shadow-lg shadow-secondary/50  motion-reduced">
 						<h2 class="text-center font-bold mb-4">SELECT SLOTS TO SWAP</h2>
 							<div class="grid grid-cols-3 gap-2 flex p-4" id="party-list">
 								<!-- Party Member Cards -->
-								<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-1" data-slot="slot1" tabindex="0"></div>
-								<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-2" data-slot="slot2" tabindex="0"></div>
-								<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-3" data-slot="slot3" tabindex="0"></div>
-								<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-4" data-slot="slot4" tabindex="0"></div>
-								<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-5" data-slot="slot5" tabindex="0"></div>
-								<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-6" data-slot="slot6" tabindex="0"></div>
+								<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-1" data-slot="slot1" tabindex="0"></div>
+								<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-2" data-slot="slot2" tabindex="0"></div>
+								<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-3" data-slot="slot3" tabindex="0"></div>
+								<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-4" data-slot="slot4" tabindex="0"></div>
+								<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-5" data-slot="slot5" tabindex="0"></div>
+								<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-6" data-slot="slot6" tabindex="0"></div>
 							</div>
-							<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+							<input class="btn btn-sm btn-square place-self-center form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
 						</div>`;
         populatePartySlots(getPlayers(), getParty(), true);
         let formCancelerrrr = document.getElementById("form-cancel");
@@ -1193,11 +1206,11 @@ document.addEventListener("DOMContentLoaded", () => {
       break;
       case "resetdata":
         formDisplay.innerHTML = `
-					<div class="form text-white rounded-lg rounded-tl-3xl p-4 justify-items-center shadow-lg bg-gradient-to-b from-red-500 to- shadow-lg shadow-blue-800/50  motion-reduced">  
+					<div class="form text-white p-4 justify-items-center shadow-lg bg-gradient-to-b from-accent to- shadow-lg shadow-secondary/50  motion-reduced">  
 						<h2 class="text-center font-bold mb-4">Are you sure you want to permanately delete all Data? </h2>
 						<div class="w-full justify-center gap-6 flex">
-						<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
-						<input class="form-button w-8 h-8 hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
+						<input class="btn btn-sm btn-square form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+						<input class="btn btn-sm btn-square form-input hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
 					</div>
 				`;
         termtext(`<anim:term-pulse><color:yellow>Opening</color> <color:red>DATA RESET</color>.\n`);
@@ -1219,15 +1232,15 @@ document.addEventListener("DOMContentLoaded", () => {
         termtext(`<color:yellow>Opening</color> User Editor.\n`);
         // Initialize form display
         formDisplay.innerHTML = `
-					<div class="form text-xs text-white text-bold rounded-lg rounded-tl-3xl p-4 w-5/6 bg-gradient-to-b from-blue-800 to- shadow-lg shadow-blue-800/50  motion-reduced">  
+					<div class="form text-xs text-white text-bold p-4 max-w-[640px] max-w-none bg-gradient-to-b from-secondary to- shadow-lg shadow-secondary/50  motion-reduced">  
 						<h2 class="text-center font-bold text-lg mb-4">Edit User</h2>
-						<select id="player-select-inclusive" class="form-select mb-4 form-text w-full">
+						<select id="player-select-inclusive" class="select form-input mb-4 w-full">
 							<option value="">Select User</option>
 						</select>
 						<div id="user-form-content" class="hidden"></div>
 						<div class="flex justify-center space-x-12 mt-4 p-2">
-							<input class="form-button w-8 h-8 hover-sfx click-sfx" type="button" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
-							<input class="form-button w-8 h-8 hover-sfx hidden" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
+							<input class="btn btn-sm btn-square form-input hover-sfx click-sfx" type="button" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+							<input class="btn btn-sm btn-square form-input hover-sfx hidden" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
 						</div>
 					</div>
 				`;
@@ -1264,18 +1277,18 @@ document.addEventListener("DOMContentLoaded", () => {
             userFormContent.innerHTML = `
 							<div class="grid grid-cols-2 gap-2> 
 								<label for="Name">Edit Username:</label>  
-								<input class="form-text hover-sfx" type="text" id="Name" name="Name" maxlength="24" data-hoversound="sounds/cursor.mp3" placeholder="Your Name Please...">  
+								<input class="input form-input hover-sfx" type="text" id="Name" name="Name" maxlength="24" data-hoversound="sounds/cursor.mp3" placeholder="Your Name Please...">  
 							</div>
 							<br>
 							<div class="grid grid-cols-4 landscape:grid-cols-8 md:grid-cols-8 gap-2">
 							<label for="Type">Type:</label>  
-								<select class="form-text w-16 hover-sfx" id="Type" name="Type" data-hoversound="sounds/cursor.mp3">  
+								<select class="select select-xs form-input w-20 hover-sfx" id="Type" name="Type" data-hoversound="sounds/cursor.mp3">  
 									<option value="Human">Human</option>  
 									<option value="Demon">Demon</option>  
 									<option value="Other">Other</option> 
 								</select>
 							<label for="Status">Status</label>  
-							<select id="Status" name="Type" class="form-text hover-sfx w-16" data-hoversound="sounds/cursor.mp3">  
+							<select id="Status" name="Type" class="select select-xs form-input hover-sfx w-20" data-hoversound="sounds/cursor.mp3">  
 							   <option>Normal</option>  
 							   <option>Low_HP</option>  
 							   <option>Bind</option>  
@@ -1295,61 +1308,60 @@ document.addEventListener("DOMContentLoaded", () => {
 							   <option>Stun</option>  
 							</select>  
 							<label for="Level">Level:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Level" name="Level" min="1" max="100" placeholder="1-100" data-hoversound="sounds/cursor.mp3" required> 
+							<input class="input form-input w-20 hover-sfx" type="number" id="Level" name="Level" min="1" max="100" placeholder="1-100" data-hoversound="sounds/cursor.mp3" required> 
 							<label for="Initiative">Initiative:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Initiative" name="Initiative" min="0" data-hoversound="sounds/cursor.mp3" required>
+							<input class="input form-input w-20 hover-sfx" type="number" id="Initiative" name="Initiative" min="0" data-hoversound="sounds/cursor.mp3" required>
 							<label for="HP_Max">Max HP:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="HP_Max" name="HP_Max" min="0" data-hoversound="sounds/cursor.mp3" required>
+							<input class="input form-input w-20 hover-sfx" type="number" id="HP_Max" name="HP_Max" min="0" data-hoversound="sounds/cursor.mp3" required>
 							<label for="HP_Current">Current HP:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="HP_Current" name="HP_Current" min="0" data-hoversound="sounds/cursor.mp3" required>  
+							<input class="input form-input w-20 hover-sfx" type="number" id="HP_Current" name="HP_Current" min="0" data-hoversound="sounds/cursor.mp3" required>  
 							<label for="MP_Max">Max MP:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="MP_Max" name="MP_Max" min="0" data-hoversound="sounds/cursor.mp3" required>  
+							<input class="input form-input w-20 hover-sfx" type="number" id="MP_Max" name="MP_Max" min="0" data-hoversound="sounds/cursor.mp3" required>  
 							<label for="MP_Current">Current MP:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="MP_Current" name="MP_Current" min="0" data-hoversound="sounds/cursor.mp3" required>  
+							<input class="input form-input w-20 hover-sfx" type="number" id="MP_Current" name="MP_Current" min="0" data-hoversound="sounds/cursor.mp3" required>  
 							<label for="Fate_Max">Max Fate:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Fate_Max" name="Fate_Max" min="0" data-hoversound="sounds/cursor.mp3" required>
+							<input class="input form-input w-20 hover-sfx" type="number" id="Fate_Max" name="Fate_Max" min="0" data-hoversound="sounds/cursor.mp3" required>
 							<label for="Fate_Current">Current Fate:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Fate_Current" name="Fate_Current" min="0" data-hoversound="sounds/cursor.mp3" required>
-							
+							<input class="input form-input w-20 hover-sfx" type="number" id="Fate_Current" name="Fate_Current" min="0" data-hoversound="sounds/cursor.mp3" required>
 							
 							<label for="Strength">Strength:</label>				
-							<input class="form-text w-16 hover-sfx" type="number" id="Strength" name="Strength" min="0" data-hoversound="sounds/cursor.mp3" required> 
+							<input class="input form-input w-20 hover-sfx" type="number" id="Strength" name="Strength" min="0" data-hoversound="sounds/cursor.mp3" required> 
 							<label for="Strength">STR TN:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="STR_TN" name="STR_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
+							<input class="input form-input w-20 hover-sfx" type="number" id="STR_TN" name="STR_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
 							<label for="Magic">Magic:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Magic" name="Magic" min="0" data-hoversound="sounds/cursor.mp3" required> 
+							<input class="input form-input w-20 hover-sfx" type="number" id="Magic" name="Magic" min="0" data-hoversound="sounds/cursor.mp3" required> 
 							<label for="Magic">MG TN:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="MG_TN" name="MG_TN" min="0" data-hoversound="sounds/cursor.mp3" required> 
+							<input class="input form-input w-20 hover-sfx" type="number" id="MG_TN" name="MG_TN" min="0" data-hoversound="sounds/cursor.mp3" required> 
 							<label for="Vitality">Vitality:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Vitality" name="Vitality" min="0" data-hoversound="sounds/cursor.mp3" required> 
+							<input class="input form-input w-20 hover-sfx" type="number" id="Vitality" name="Vitality" min="0" data-hoversound="sounds/cursor.mp3" required> 
 							<label for="Vitality">VT TN:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="VT_TN" name="VT_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
+							<input class="input form-input w-20 hover-sfx" type="number" id="VT_TN" name="VT_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
 							<label for="Agility">Agility:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Agility" name="Agility" min="0" data-hoversound="sounds/cursor.mp3" required>
+							<input class="input form-input w-20 hover-sfx" type="number" id="Agility" name="Agility" min="0" data-hoversound="sounds/cursor.mp3" required>
 							<label for="Agility">AG TN:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="AG_TN" name="AG_TN" min="0" data-hoversound="sounds/cursor.mp3" required>  
+							<input class="input form-input w-20 hover-sfx" type="number" id="AG_TN" name="AG_TN" min="0" data-hoversound="sounds/cursor.mp3" required>  
 							<label for="Luck">Luck:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Luck" name="Luck" min="0" data-hoversound="sounds/cursor.mp3" required>
+							<input class="input form-input w-20 hover-sfx" type="number" id="Luck" name="Luck" min="0" data-hoversound="sounds/cursor.mp3" required>
 							<label for="Luck">LK TN:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="LK_TN" name="LK_TN" min="0" data-hoversound="sounds/cursor.mp3" required> 
+							<input class="input form-input w-20 hover-sfx" type="number" id="LK_TN" name="LK_TN" min="0" data-hoversound="sounds/cursor.mp3" required> 
 
 							<label for="Melee_Power">Melee Power:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Melee_Power" name="Melee_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
+							<input class="input form-input w-20 hover-sfx" type="number" id="Melee_Power" name="Melee_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
 							<label for="Ranged_Power">Ranged Power:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Ranged_Power" name="Ranged_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
+							<input class="input form-input w-20 hover-sfx" type="number" id="Ranged_Power" name="Ranged_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
 							<label for="Magic_Power">Magic Power:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Magic_Power" name="Magic_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
+							<input class="input form-input w-20 hover-sfx" type="number" id="Magic_Power" name="Magic_Power" min="0" data-hoversound="sounds/cursor.mp3" required>  
 								 
 							<label for="Dodge_TN">Dodge TN:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Dodge_TN" name="Dodge_TN" min="0" data-hoversound="sounds/cursor.mp3" required>  
+							<input class="input form-input w-20 hover-sfx" type="number" id="Dodge_TN" name="Dodge_TN" min="0" data-hoversound="sounds/cursor.mp3" required>  
 							<label for="Talk_TN">Talk TN:</label>  
-							<input class="form-text w-16 hover-sfx" type="number" id="Talk_TN" name="Talk_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
+							<input class="input form-input w-20 hover-sfx" type="number" id="Talk_TN" name="Talk_TN" min="0" data-hoversound="sounds/cursor.mp3" required>
 							</div>  
 							
 							<div class="mt-2">
 							<label for="playerImage">Edit Avatar:</label>
-							<input class="form-text hover-sfx" type="file" id="playerImage" data-hoversound="sounds/cursor.mp3">
-							<input class="form-button hover-sfx click-sfx h-7 w-14" type="button" id="image-remove" value="Remove" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Okay.mp3">
+							<input class="file-input form-input file-input-sm hover-sfx" type="file" id="playerImage" data-hoversound="sounds/cursor.mp3">
+							<input class="btn btn-sm form-input hover-sfx click-sfx" type="button" id="image-remove" value="Remove" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Okay.mp3">
 
 							</div>
 		      	`;
@@ -1517,14 +1529,14 @@ document.addEventListener("DOMContentLoaded", () => {
       break;
       case "deleteuser":
           formDisplay.innerHTML = `
-          <div class="form text-white rounded-lg rounded-tl-3xl p-4 w-1/2 shadow-lg bg-gradient-to-b from-blue-800 to- shadow-lg shadow-blue-800/50  motion-reduced">  
+          <div class="form text-white p-4 w-1/2 shadow-lg bg-gradient-to-b from-secondary to- shadow-lg shadow-secondary/50  motion-reduced">  
           <h2 class="text-center font-bold mb-4">SELECT USER TO DELETE</h2>
-          <select id="player-select-inclusive" class="form-select mb-4 form-text w-full">
+          <select id="player-select-inclusive" class="select form-input mb-4 w-full">
             <option value="">Select User</option>
           </select>
           <div class="w-full justify-center gap-6 flex">
-            <input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
-            <input class="form-button w-8 h-8 hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
+            <input class="btn btn-sm btn-square form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+            <input class="btn btn-sm btn-square form-input hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
           </div>
           </div>
         `;
@@ -1550,7 +1562,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         };
 
-	// Call the function to populate the dropdown
+        // Call the function to populate the dropdown
         updatePlayerDropdowninclusivee();
 
         function userdelete() {
@@ -1592,34 +1604,34 @@ document.addEventListener("DOMContentLoaded", () => {
           closeForm();
         }
     break;
-    case "cornerdisplay":
+      case "cornerdisplay":
       formDisplay.innerHTML = `
-					<div class="form text-white rounded-lg rounded-tl-3xl p-4 w-1/2 shadow-lg bg-gradient-to-b from-blue-800 to- shadow-lg shadow-blue-800/50  motion-reduced">  
+					<div class="form text-white p-4 max-w-64 shadow-lg bg-gradient-to-b from-secondary to- shadow-lg shadow-secondary/50  motion-reduced">  
 						<h2 class="text-center font-bold mb-4">Update Global Data</h2>
 						<div class="grid grid-cols-2">
 							<!-- Adjust Moon --> 
 							<label id="moon-label">Moon</label>  
 								<div class="flex justify-start items-center space-x-2 p-2">  
-								   <button id="phase-decrease" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>  
+								   <button id="phase-decrease" class="btn form-input btn-xs btn-square hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>  
 								   <span id="form-phase" class="mx-2">0</span>  
-								   <button id="phase-increase" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>   
+								   <button id="phase-increase" class="btn form-input btn-xs btn-square hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>   
 								</div>  
 								
 							<!-- Adjust Macca -->  
 							<label id="macca-label">Macca</label>
-							<div class="justify-start space-x-2 space-y-3">    
+							<div class="space-x-1 space-y-3">    
 								  
-								<input type="number" id="macca-form" placeholder="Macca" class="form-text w-full hover-sfx" min="0" data-hoversound="sounds/cursor.mp3">  
-								<div class="grid grid-cols-3 justify-left">
-									<button id="macca-decrease" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>
-									<button id="macca-increase" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>
-									<button id="macca-equal" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">=</button>
+								<input type="number" id="macca-form" placeholder="Macca" class="input form-input w-full hover-sfx" min="0" data-hoversound="sounds/cursor.mp3">  
+								<div class="grid grid-cols-3">
+									<button id="macca-decrease" class="btn btn-xs btn-square form-input hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>
+									<button id="macca-increase" class="btn btn-xs btn-square form-input hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>
+									<button id="macca-equal" class="btn btn-xs btn-square form-input hover-sfx" data-hoversound="sounds/cursor.mp3">=</button>
 								</div>
 							</div>  
 						</div>
-						<div class="w-full justify-left gap-6 flex">
-						<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
-						<input class="form-button w-8 h-8 hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
+						<div class="w-full justify-center gap-6 p-3 flex">
+						<input class="btn btn-sm btn-square form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+						<input class="btn btn-sm btn-square form-input hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
 						</div>
 					</div>
 				`;
@@ -1690,7 +1702,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let moonicon = `${formphase}.gif`;
         document.getElementById("macca-label").innerHTML = `ћ ${formmacca}`;
         document.getElementById("moon-label").innerHTML = `${phase} MOON`;
-        moon.innerHTML = `<img src="views/${moonicon}" alt="${formphase}" class="w-8 h-8 rounded-full shadow-lg ring-2">`;
+        moon.innerHTML = `<img src="views/${moonicon}" alt="${formphase}" class="w-8 h-8 rounded-full shadow-secondary/50 outline-secondary outline-double">`;
 
         phaseIncrease.addEventListener("click", () => {
           if (formphase >= 15) {
@@ -1701,7 +1713,7 @@ document.addEventListener("DOMContentLoaded", () => {
           phase = getPhase(formphase);
           document.getElementById("moon-label").innerHTML = `${phase} MOON`;
           moonicon = `${formphase}.gif`;
-          moon.innerHTML = `<img src="views/${moonicon}" alt="${formphase}" class="w-8 h-8 rounded-full shadow-lg ring-2">`;
+          moon.innerHTML = `<img src="views/${moonicon}" alt="${formphase}" class="w-8 h-8 rounded-full shadow-secondary/50 outline-secondary outline-double">`;
         });
 
         phaseDecrease.addEventListener("click", () => {
@@ -1713,7 +1725,7 @@ document.addEventListener("DOMContentLoaded", () => {
           phase = getPhase(formphase);
           document.getElementById("moon-label").innerHTML = `${phase} MOON`;
           moonicon = `${formphase}.gif`;
-          moon.innerHTML = `<img src="views/${moonicon}" alt="${formphase}" class="w-8 h-8 rounded-full shadow-lg ring-2">`;
+          moon.innerHTML = `<img src="views/${moonicon}" alt="${formphase}" class="w-8 h-8 rounded-full shadow-secondary/50 outline-secondary outline-double">`;
         });
 
         function confirmupdate() {
@@ -1756,22 +1768,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         formDisplay.innerHTML = `
-				  <div class="form text-white rounded-lg rounded-tl-3xl p-4 w-7/8 bg-gradient-to-b from-blue-800 to- shadow-lg shadow-blue-800/50  motion-reduced">
+				  <div class="form text-white p-4 max-w-[640px] bg-gradient-to-b from-secondary to- shadow-lg shadow-secondary/50  motion-reduced">
 					<div id="inner-display">
 					  <h2 class="text-center font-bold mb-4">SELECT USER TO ROLL</h2>
 					  <div class="grid grid-cols-3 gap-2 flex p-4" id="party-list">
 						<!-- Party Member Cards -->
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-1" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-2" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-3" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-4" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-5" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-6" tabindex="0"></div>
+						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-1" tabindex="0"></div>
+						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-2" tabindex="0"></div>
+						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-3" tabindex="0"></div>
+						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-4" tabindex="0"></div>
+						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-5" tabindex="0"></div>
+						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-6" tabindex="0"></div>
 					  </div>
 					</div>
-					<div class="flex gap-6 p-4">
-						<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
-						<input class="form-button w-8 h-8 hover-sfx hidden" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
+					<div class="flex gap-6 p-4 place-self-center">
+						<input class="btn btn-sm btn-square form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+						<input class="btn btn-sm btn-square form-input hover-sfx hidden" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
 					</div>
 				</div>
 				`;
@@ -1824,14 +1836,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
               innerDisplay.innerHTML = `
 						<h2 class="text-center font-bold mb-4" id="form-title">${currentPlayer.Name}</h2>
-						<div id="formula-display" class="form-text bg-gray-700 text-white p-2 rounded mb-4">
+						<div id="formula-display" class="form-input p-2 rounded mb-4">
 						  Base (${baseTN}%) + Bonus (${bonus}%) + Fate (${fatePoints * 20}%) = <strong>${baseTN}% TN</strong>
 						</div>
-						<div class="grid grid-cols-3 gap-4 justify-items-center">
+						<div class="grid grid-cols-3 gap-2 place-items-end">
 							<div>
 							<label id="basetn-label" for="base_tn">Base TN</label>
 							
-							<select id="base_tn" name="base_tn" class="form-text hover-sfx w-16" data-hoversound="sounds/cursor.mp3">
+							<select id="base_tn" name="base_tn" class="select max-w-32 select-xs form-input hover-sfx" data-hoversound="sounds/cursor.mp3">
 							  <option value="0">None (0 TN)</option>
 							  <option value="${currentPlayer.STR_TN}">Strength TN</option>
 							  <option value="${currentPlayer.MG_TN}">Magic TN</option>
@@ -1845,47 +1857,47 @@ document.addEventListener("DOMContentLoaded", () => {
 							
 							<div>
 							<label for="form-bonus">Bonus TN</label>
-							<input class="form-text w-16 hover-sfx" type="number" id="form-bonus" name="bonuses" data-hoversound="sounds/cursor.mp3" required>
+							<input class="input input-xs max-w-16 form-input hover-sfx" type="number" id="form-bonus" name="bonuses" data-hoversound="sounds/cursor.mp3" required>
 							</div>
 							<div class="flex justify-start items-center gap-2">
-							  <label>Use Fate ${currentPlayer.Fate_Current}/${currentPlayer.Fate_Max}</label>
-							  <button id="fate-decrease" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>
+							  <label>Use Fate</label>
+							  <button id="fate-decrease" class="btn btn-xs form-input hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>
 							  <span id="form-fate" class="mx-2">0</span>
-							  <button id="fate-increase" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>
+							  <button id="fate-increase" class="btn btn-xs form-input hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>
 							
 							</div>
 							<div id="div-hp">
 								<label for="hp-cost">HP Cost</label>
-								<input class="form-text w-16 hover-sfx" type="number" id="hp-cost" name="hp_cost" min="0" data-hoversound="sounds/cursor.mp3" required>
+								<input class="input input-xs max-w-16 form-input hover-sfx" type="number" id="hp-cost" name="hp_cost" min="0" data-hoversound="sounds/cursor.mp3" required>
 							</div>
 							<div id="div-mp">
 								<label for="mp-cost">MP Cost</label>
-								<input class="form-text w-16 hover-sfx" type="number" id="mp-cost" name="mp_cost" min="0" data-hoversound="sounds/cursor.mp3" required>
+								<input class="input input-xs max-w-16 form-input hover-sfx" type="number" id="mp-cost" name="mp_cost" min="0" data-hoversound="sounds/cursor.mp3" required>
 							</div>
 							<div>
 							<div id="div-critbonus">
-								<input type="checkbox" id="critbonus" name="critbonus" value="critbonus">
+								<input type="checkbox" id="critbonus" name="critbonus" value="critbonus" class="align-middle checkbox checkbox-xs form-input down-14">
 								<label for="critbonus">Crit on 1/5</label>
 							</div>
 							</div>
 							</div>
-							<fieldset id="div-multivisor" class="flex items-center gap-4">
+							<fieldset id="div-multivisor" class="flex">
 							  <legend>Mod TN by</legend>
 							  <div>
 								<!-- None Option -->
-								<input id="none" class="peer/none" type="radio" name="afteropt" value="None" checked />
+								<input id="none" class="peer/none radio radio-sm align-middle" type="radio" name="afteropt" value="None" checked />
 								<label for="none" class="peer-checked:text-sky-500 cursor-pointer">None</label>
 
 								<!-- Multiply Option -->
-								<input id="multiply" class="peer/multiply" type="radio" name="afteropt" value="Multiply" />
+								<input id="multiply" class="peer/multiply radio radio-sm align-middle" type="radio" name="afteropt" value="Multiply" />
 								<label for="multiply" class="peer-checked:text-sky-500 cursor-pointer">Multiply</label>
 
 								<!-- Divide Option -->
-								<input id="divide" class="peer/divide" type="radio" name="afteropt" value="Divide" />
+								<input id="divide" class="peer/divide radio radio-sm align-middle" type="radio" name="afteropt" value="Divide" />
 								<label for="divide" class="peer-checked:text-sky-500 cursor-pointer">Divide</label>
 							  
 							  <!-- Multivisor Input -->
-								<input class="form-text w-8 hover-sfx p-1 border border-gray-400 rounded hidden" placeholder="#" type="number" id="multivisor" name="multivisor" min="1" data-hoversound="sounds/cursor.mp3" required/></div>
+								<input class="input form-input w-8 hover-sfx p-1 border border-gray-400 rounded hidden" placeholder="#" type="number" id="multivisor" name="multivisor" min="1" data-hoversound="sounds/cursor.mp3" required/></div>
 							</div>
 							</fieldset>
 					  `;
@@ -2411,22 +2423,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         formDisplay.innerHTML = `
-				  <div class="form text-white rounded-lg rounded-tl-3xl p-4 w-7/8 bg-gradient-to-b from-blue-800 to- shadow-lg shadow-blue-800/50  motion-reduced">
+				  <div class="form text-white p-4 max-w-[640px] bg-gradient-to-b from-secondary to- shadow-lg shadow-secondary/50  motion-reduced">
 					<div id="inner-display">
 					  <h2 class="text-center font-bold mb-4">SELECT USER TO ROLL</h2>
 					  <div class="grid grid-cols-3 gap-2 flex p-4" id="party-list">
 						<!-- Party Member Cards -->
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-1" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-2" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-3" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-4" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-5" tabindex="0"></div>
-						<div class="party-member bg-gradient-to-br from-teal-900 to- hover:shadow-lg hover:shadow-red-500/50" id="party-slot-6" tabindex="0"></div>
+						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-1" tabindex="0"></div>
+						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-2" tabindex="0"></div>
+						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-3" tabindex="0"></div>
+						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-4" tabindex="0"></div>
+						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-5" tabindex="0"></div>
+						<div class="party-member bg-gradient-to-br from-primary to- hover:shadow-lg hover:shadow-accent/50" id="party-slot-6" tabindex="0"></div>
 					  </div>
 					</div>
 					<div class="w-full justify-center gap-6 p-4 flex">
-					<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
-					<input class="form-button w-8 h-8 hover-sfx hidden" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
+					<input class="btn btn-sm btn-square form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+					<input class="btn btn-sm btn-square form-input hover-sfx hidden" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
 					</div>
 				  </div>
 				`;
@@ -2474,13 +2486,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
               innerrDisplay.innerHTML = `
                 <h2 id="form-title" class="text-center font-bold mb-4">${currentPlayer.Name}</h2>
-                <div id="formula-display" class="form-text bg-gray-700 text-white p-2 rounded mb-4">
+                <div id="formula-display" class="form-input bg-gray-700 text-white p-2 rounded mb-4">
                   Base (${baseTN}) + Bonus (${bonus}) = <strong>${baseTN} + ${dice}d10 Power</strong>
                 </div>
-                <div class="grid grid-cols-3 gap-4 justify-items-center">
+                <div class="grid grid-cols-3 gap-2 place-items-end">
                   <div>
                   <label for="base_tn" id="basetn-label">Base Power</label>
-                  <select id="base_tn" name="base_tn" class="form-text hover-sfx w-16" data-hoversound="sounds/cursor.mp3">
+                  <select id="base_tn" name="base_tn" class="select select-xs form-input hover-sfx w-24" data-hoversound="sounds/cursor.mp3">
                     <option value="0">None (0)</option>
                     <option value="${currentPlayer.Melee_Power}">Melee Power</option>
                     <option value="${currentPlayer.Magic_Power}">Magic Power</option>
@@ -2491,22 +2503,22 @@ document.addEventListener("DOMContentLoaded", () => {
                   
                   <div>
                   <label for="form-bonus">Bonus Power</label>
-                  <input class="form-text w-16 hover-sfx" type="number" id="form-bonus" name="bonuses" data-hoversound="sounds/cursor.mp3" required>
+                  <input class="input form-input w-16 hover-sfx" type="number" id="form-bonus" name="bonuses" data-hoversound="sounds/cursor.mp3" required>
                   </div>
                   <div class="flex justify-start items-center gap-2">
                     <label>Dice</label>
-                    <button id="dice-decrease" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>
+                    <button id="dice-decrease" class="btn btn-xs form-input hover-sfx" data-hoversound="sounds/cursor.mp3">-</button>
                     <span id="form-dice" class="mx-2">1d10</span>
                   
-                  <button id="dice-increase" class="form-button w-5 h-5 hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>
+                  <button id="dice-increase" class="btn btn-xs form-input hover-sfx" data-hoversound="sounds/cursor.mp3">+</button>
                   </div>
                   <div id="div-hp">
                     <label for="hp-cost">HP Cost</label>
-                    <input class="form-text w-16 hover-sfx" type="number" id="hp-cost" name="hp_cost" min="0" data-hoversound="sounds/cursor.mp3" required>
+                    <input class="input form-input w-16 hover-sfx" type="number" id="hp-cost" name="hp_cost" min="0" data-hoversound="sounds/cursor.mp3" required>
                   </div>
                   <div id="div-mp">
                     <label for="mp-cost">MP Cost</label>
-                    <input class="form-text w-16 hover-sfx" type="number" id="mp-cost" name="mp_cost" min="0" data-hoversound="sounds/cursor.mp3" required>
+                    <input class="input form-input w-16 hover-sfx" type="number" id="mp-cost" name="mp_cost" min="0" data-hoversound="sounds/cursor.mp3" required>
                   </div>
                 
                   </div>
@@ -2514,19 +2526,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     <legend>Mod Result by</legend>
                     <div class="flex items-center gap-5">
                     <!-- None Option -->
-                    <input id="none" class="peer/none" type="radio" name="afteropt" value="None" checked />
+                    <input id="none" class="peer/none radio align-middle" type="radio" name="afteropt" value="None" checked />
                     <label for="none" class="peer-checked:text-sky-500 cursor-pointer">None</label>
 
                     <!-- Multiply Option -->
-                    <input id="multiply" class="peer/multiply" type="radio" name="afteropt" value="Multiply" />
+                    <input id="multiply" class="peer/multiply radio align-middle" type="radio" name="afteropt" value="Multiply" />
                     <label for="multiply" class="peer-checked:text-sky-500 cursor-pointer">Multiply</label>
 
                     <!-- Divide Option -->
-                    <input id="divide" class="peer/divide" type="radio" name="afteropt" value="Divide" />
+                    <input id="divide" class="peer/divide radio align-middle" type="radio" name="afteropt" value="Divide" />
                     <label for="divide" class="peer-checked:text-sky-500 cursor-pointer">Divide</label>
                     
                     <!-- Multivisor Input -->
-                    <input class="form-text w-8 hover-sfx p-1 border border-gray-400 rounded hidden" placeholder="#" type="number" id="multivisor" name="multivisor" min="1" data-hoversound="sounds/cursor.mp3" required/></div>
+                    <input class="input form-input w-8 hover-sfx p-1 border border-gray-400 rounded hidden" placeholder="#" type="number" id="multivisor" name="multivisor" min="1" data-hoversound="sounds/cursor.mp3" required/></div>
                   </div>
                 </fieldset>
               `;
@@ -2712,24 +2724,51 @@ document.addEventListener("DOMContentLoaded", () => {
       break;
       case "config":
         formDisplay.innerHTML = `
-					<div class="form text-white rounded-lg rounded-tl-3xl p-4 w-1/2 shadow-lg bg-gradient-to-b from-blue-800 to- shadow-lg shadow-blue-800/50">  
+					<div class="form text-white p-4 w-1/2 shadow-lg bg-gradient-to-b from-secondary to- shadow-lg shadow-secondary/50">  
 						<h2 class="text-center font-bold mb-4">Configure System </h2>
 						<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 							<div>
 							<label for="username">Username</label>
-							<input class="form-text w-full hover-sfx" type="text" id="username" data-hoversound="sounds/cursor.mp3" maxlength="16" required>
+							<input class="input form-input w-full hover-sfx" type="text" id="username" data-hoversound="sounds/cursor.mp3" maxlength="16" required>
 							</div>
 							<div>
 							<label for="system">Version</label>
-								<select id="system" name="system" class="form-text hover-sfx w-full" data-hoversound="sounds/cursor.mp3">
+								<select id="system" name="system" class="select select-xs form-input hover-sfx w-full" data-hoversound="sounds/cursor.mp3">
 								  <option value="0">Devil City Tokyo</option>
 								  <option value="1">Tokyo Conception</option>
 								</select>
 							</div>
+
+             <div class="dropdown" id="theme">
+              <div tabindex="0" role="button" class="btn btn-sm form-input m-1 hover-sfx click-sfx" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Okay.mp3">
+                Pick Theme
+                <svg width="12px" height="12px" class="inline-block h-2 w-2 fill-current opacity-60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
+                  <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+                </svg>
+              </div>
+              <ul tabindex="0" class="dropdown-content bg-base-300 rounded-box z-[1] w-52 p-2 shadow-2xl max-h-60 overflow-y-auto">
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="DDS-NET" value="ddsnet"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Diamond Realm" value="diamondrealm"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Tokyo Conception" value="tokyoconception"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Mikado Samurai" value="mikadosamurai"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Nahonbino" value="nahobino"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Arctic Journey" value="arcticjourney"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Velvet Moonlight" value="velvetmoonlight"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Golden Glow" value="goldenglow"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Phantom Thief" value="phantomthief"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Business" value="business"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Synthwave" value="synthwave"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Halloween" value="halloween"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Forest" value="forest"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Coffee" value="coffee"></li>
+                <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Sunset" value="sunset"></li>
+                </ul>
+            </div>
 						</div>
+
 						<div class="w-full justify-center gap-6 p-4 flex">
-							<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
-							<input class="form-button w-8 h-8 hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
+							<input class="btn btn-sm btn-square form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+							<input class="btn btn-sm btn-square form-input hover-sfx" type="submit" id="form-confirm" value="✔" data-hoversound="sounds/cursor.mp3">
 						</div>
 					</div>
 				   `;
@@ -2744,9 +2783,12 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("username").value = systeminfo.username;
 
         function systemupdate() {
+          const selectedThemeElement = document.querySelector('input[name="theme-dropdown"]:checked');
+          const setTheme = selectedThemeElement ? selectedThemeElement.value : systeminfo.config1;
           const formElements = {
             username: document.getElementById("username").value.trim(),
             rules: document.getElementById("system").value,
+            theme: setTheme,
           };
 
           const system = {
@@ -2755,15 +2797,15 @@ document.addEventListener("DOMContentLoaded", () => {
             macca: systeminfo.macca,
             moon: systeminfo.moon,
             macca: systeminfo.macca,
-            config1: systeminfo.config1,
+            config1: formElements.theme,
             config2: systeminfo.config2,
             config3: systeminfo.config3,
             config4: systeminfo.config4,
             config5: systeminfo.config5,
             config6: systeminfo.config6,
             config7: systeminfo.config7,
-            config1: systeminfo.config8,
-            config1: systeminfo.config9,
+            config8: systeminfo.config8,
+            config9: systeminfo.config9,
           };
 
           if (formElements.username === "") {
@@ -2776,16 +2818,18 @@ document.addEventListener("DOMContentLoaded", () => {
           updateCornerDisplay();
           playSound("sounds/Comp.mp3");
           termtext(`<anim:term-blue><color:green>Success</color> System info for <color:blue>${formElements.username}</color> has been updated.\n`);
-		  location.reload();
+		      location.reload();
+          console.log(formElements.theme)
+          console.log(system.config1)
           closeForm();
         }
 
       break;
       default:
         formDisplay.innerHTML = `
-					<div class="form text-white rounded-lg rounded-tl-3xl p-4 w-1/2 shadow-lg bg-gradient-to-b from-red-500 to- shadow-lg shadow-blue-800/50">  
+					<div class="form text-white rounded-lg rounded-tl-3xl p-4 w-1/2 shadow-lg bg-gradient-to-b from-accent to- shadow-lg shadow-secondary/50">  
 						<h2 class="text-center font-bold mb-4">Sorry! This feature isn't ready yet. </h2>
-						<input class="form-button w-8 h-8 hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
+						<input class="btn btn-sm form-input hover-sfx click-sfx" type="submit" id="form-cancel" value="X" data-hoversound="sounds/cursor.mp3" data-clicksound="sounds/Negative.mp3">
 					</div>
 				   `;
         let formCancelerrrrrrrr = document.getElementById("form-cancel");
@@ -2903,7 +2947,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let moonicon = `${system.moon}.gif`;
     moondisplay = document.getElementById("phase-display").innerHTML = `${phase}<br>MOON`;
-    moonimage.innerHTML = `<img src="views/${moonicon}" alt="${system.moon}" class="w-8 h-8 rounded-full shadow-lg ring-2">`;
+    moonimage.innerHTML = `<img src="views/${moonicon}" alt="${system.moon}" class="w-8 h-8 rounded-full shadow-lg ring-2 ring-secondary">`;
   }
 
   const menuTabs = document.querySelectorAll(".tab-button");
